@@ -1,0 +1,23 @@
+{
+  "name": "nyc-concert-calendar",
+  "version": "2.0.0",
+  "description": "Aggregates NYC live music listings into a Google Sheet for a daily concert calendar",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "briefing": "node briefing.js",
+    "scan-venues": "node scripts/scan-venues.js",
+    "check": "node --check index.js && node --check briefing.js",
+    "test": "node test/parsers.test.js"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "googleapis": "^144.0.0"
+  }
+}

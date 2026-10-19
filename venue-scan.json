@@ -1,0 +1,2634 @@
+{
+  "generatedAt": "2026-10-14T20:42:38.915Z",
+  "count": 300,
+  "venues": [
+    {
+      "name": "Mercury Lounge",
+      "website": "http://www.mercuryeastpresents.com/mercurylounge",
+      "shows_count": 89,
+      "address": "217 E. Houston Street New York, NY 10002",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://www.ticketmaster.com/ian-mcconnell-new-york-new-york-10-14-2026/event/000064C8C440417A",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "Baby's All Right",
+      "website": "http://babysallright.com/",
+      "shows_count": 76,
+      "address": "146 Broadway Brooklyn, NY 11211",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Brooklyn Paramount",
+      "website": "https://www.brooklynparamount.com/",
+      "shows_count": 70,
+      "address": "385 Flatbush Ave Extension Brooklyn, NY 11201",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": true,
+      "calendarHref": "/shows",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "Bowery Ballroom",
+      "website": "http://www.boweryballroom.com",
+      "shows_count": 68,
+      "address": "6 Delancey Street @ Bowery New York, NY 10002",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://www.ticketmaster.com/tokyo-tea-room-feel-forever-tour-new-york-new-york-10-14-2026/event/000064B2EF8C3C89",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "Elsewhere",
+      "website": "http://www.elsewherebrooklyn.com/",
+      "shows_count": 66,
+      "address": "599 Johnson Avenue Brooklyn, NY 11237",
+      "status": "ok",
+      "platforms": [
+        "Eventbrite"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/events",
+      "approach": "Ticketing link found: Eventbrite (verify shows are sold there)"
+    },
+    {
+      "name": "Night Club 101",
+      "website": "",
+      "shows_count": 61,
+      "address": "101 Avenue A New York, NY 10009",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "(Le) Poisson Rouge",
+      "website": "http://lepoissonrouge.com/",
+      "shows_count": 59,
+      "address": "158 Bleecker Street New York, NY 10012",
+      "status": "ok",
+      "platforms": [
+        "Eventbrite"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Ticketing link found: Eventbrite (verify shows are sold there)"
+    },
+    {
+      "name": "Irving Plaza",
+      "website": "http://venue.irvingplaza.com/",
+      "shows_count": 51,
+      "address": "17 Irving Place New York, NY 10003",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/events/upcoming",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "Webster Hall",
+      "website": "http://www.websterhall.com/",
+      "shows_count": 50,
+      "address": "125 East 11th Street New York, NY 10009",
+      "status": "ok",
+      "platforms": [
+        "AXS"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/shows",
+      "approach": "Ticketing link found: AXS (verify shows are sold there)"
+    },
+    {
+      "name": "Brooklyn Steel",
+      "website": "http://www.bowerypresents.com/brooklyn-steel/",
+      "shows_count": 46,
+      "address": "319 Frost Street Brooklyn, NY 11222",
+      "status": "ok",
+      "platforms": [
+        "AXS"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/calendar",
+      "approach": "Ticketing link found: AXS (verify shows are sold there)"
+    },
+    {
+      "name": "TV EYE",
+      "website": "https://tveyenyc.com/calendar/",
+      "shows_count": 44,
+      "address": "1647 Weirfield Ridgewood, NY 11385",
+      "status": "blocked (403/429)",
+      "approach": "Blocked from this server; try a browser or the venue directly"
+    },
+    {
+      "name": "Public Records",
+      "website": "http://publicrecords.nyc",
+      "shows_count": 43,
+      "address": "233 Butler Brooklyn, NY 11217",
+      "status": "ok",
+      "platforms": [
+        "Dice"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://www.fouroneoneprojects.org/events/transatlantik-ii-jardineros-tree-trini-collective-dj-sabine-blaizin",
+      "approach": "Ticketing link found: Dice (verify shows are sold there)"
+    },
+    {
+      "name": "Saint Vitus",
+      "website": "http://www.saintvitusbar.com/",
+      "shows_count": 40,
+      "address": "428 Troutman Street Brooklyn, NY 11237",
+      "status": "ok",
+      "platforms": [
+        "Dice"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Ticketing link found: Dice (verify shows are sold there)"
+    },
+    {
+      "name": "The Sultan Room",
+      "website": "",
+      "shows_count": 38,
+      "address": "234 Starr Street Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Warsaw",
+      "website": "http://www.warsawconcerts.com/",
+      "shows_count": 33,
+      "address": "261 Driggs Ave Brooklyn, NY 11222-3901",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": true,
+      "calendarHref": "/shows",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "Union Pool",
+      "website": "http://www.union-pool.com",
+      "shows_count": 32,
+      "address": "484 Union Ave Brooklyn, NY 11211",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/calendar",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "ALPHAVILLE",
+      "website": "https://www.alphavillebk.com",
+      "shows_count": 31,
+      "address": "140 Wilson Avenue Brooklyn, NY 11237",
+      "status": "ok",
+      "platforms": [
+        "Dice"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Ticketing link found: Dice (verify shows are sold there)"
+    },
+    {
+      "name": "Knockdown Center",
+      "website": "",
+      "shows_count": 31,
+      "address": "52-19 Flushing Ave. Maspeth, NY 11378",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Racket",
+      "website": "https://www.bowerypresents.com/new-york-metro/shows/racket",
+      "shows_count": 31,
+      "address": "431 West 16th Street New York, NY 10011",
+      "status": "ok",
+      "platforms": [
+        "AXS"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/calendar",
+      "approach": "Ticketing link found: AXS (verify shows are sold there)"
+    },
+    {
+      "name": "Brooklyn Bowl",
+      "website": "http://www.brooklynbowl.com",
+      "shows_count": 28,
+      "address": "61 Wythe Avenue Brooklyn, NY 11211",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/events",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "Music Hall of Williamsburg",
+      "website": "http://www.musichallofwilliamsburg.com/",
+      "shows_count": 28,
+      "address": "66 North Sixth Street Brooklyn, NY 11211",
+      "status": "ok",
+      "platforms": [
+        "AXS"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/calendar",
+      "approach": "Ticketing link found: AXS (verify shows are sold there)"
+    },
+    {
+      "name": "Terminal 5",
+      "website": "http://terminal5nyc.com",
+      "shows_count": 27,
+      "address": "610 W. 56th Street New York, NY 10019",
+      "status": "ok",
+      "platforms": [
+        "AXS"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/calendar",
+      "approach": "Ticketing link found: AXS (verify shows are sold there)"
+    },
+    {
+      "name": "The Wood Shop",
+      "website": "",
+      "shows_count": 26,
+      "address": "17B Meadow Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Blue Note",
+      "website": "",
+      "shows_count": 24,
+      "address": "131 W. 3rd Street New York, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Cassette",
+      "website": "",
+      "shows_count": 24,
+      "address": "68-38 Forest Ave Ridgewood, NY 11385",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Madison Square Garden",
+      "website": "http://www.thegarden.com/index.jsp",
+      "shows_count": 24,
+      "address": "4 Penn Plaza New York, NY 10001",
+      "status": "unreachable: fetch failed",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Gramercy Theatre",
+      "website": "http://venue.thegramercytheatre.com/",
+      "shows_count": 23,
+      "address": "127 East 23rd Street New York, NY 10010",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": true,
+      "calendarHref": "/events/upcoming",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "Sony Hall",
+      "website": "https://www.sonyhall.com/",
+      "shows_count": 23,
+      "address": "235 W 46th Street New York, NY 10036",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://sonyhall.com/shows/",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "Town Hall",
+      "website": "http://www.the-townhall-nyc.org/",
+      "shows_count": 23,
+      "address": "123 West 43rd Street New York, NY 10036",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/events/calendar",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "The Broadway",
+      "website": "",
+      "shows_count": 21,
+      "address": "1272 Broadway Brooklyn, NY 11221",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "The Gutter",
+      "website": "",
+      "shows_count": 21,
+      "address": "200 North 14th Street Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Barclays Center",
+      "website": "",
+      "shows_count": 20,
+      "address": "620 Atlantic Avenue Brooklyn, NY 11217",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Berlin",
+      "website": "",
+      "shows_count": 20,
+      "address": "25 Avenue A New York, NY 10009",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "The Meadows",
+      "website": "",
+      "shows_count": 20,
+      "address": "17 Meadow Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Beacon Theatre",
+      "website": "",
+      "shows_count": 18,
+      "address": "2124 Broadway New York, NY 10023",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Carnegie Hall",
+      "website": "https://www.carnegiehall.org/",
+      "shows_count": 18,
+      "address": "881 Seventh Avenue New York, NY 10019",
+      "status": "blocked (403/429)",
+      "approach": "Blocked from this server; try a browser or the venue directly"
+    },
+    {
+      "name": "Gold Sounds",
+      "website": "",
+      "shows_count": 17,
+      "address": "44 Wilson Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Roulette",
+      "website": "http://roulette.org/",
+      "shows_count": 17,
+      "address": "509 Atlantic Avenue Brooklyn, NY 11217",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://roulette.org/calendar/",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "National Sawdust",
+      "website": "https://nationalsawdust.org",
+      "shows_count": 16,
+      "address": "Wythe Ave & North 6th Brooklyn, NY 11249",
+      "status": "ok",
+      "platforms": [
+        "Eventbrite"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/event/dvt-traveling-shoes-experience",
+      "approach": "Ticketing link found: Eventbrite (verify shows are sold there)"
+    },
+    {
+      "name": "City Winery",
+      "website": "http://www.citywinery.com/",
+      "shows_count": 15,
+      "address": "25 11th Ave (at 15th Street) New York, NY 10011",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Purgatory",
+      "website": "",
+      "shows_count": 15,
+      "address": "675 Central Avenue Brooklyn, NY 11207",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Sleepwalk",
+      "website": "",
+      "shows_count": 15,
+      "address": "251 Bushwick Avenue Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Kings Theatre",
+      "website": "http://www.kingstheatre.com/",
+      "shows_count": 14,
+      "address": "1027 Flatbush Avenue Brooklyn, NY 11226",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/venues/kings-theatre-brooklyn/whats-on/us/events/",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "Rough Trade NYC",
+      "website": "http://www.roughtradenyc.com/",
+      "shows_count": 14,
+      "address": "30 Rockefeller Plaza NYC, NY 10112",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Trans-Pecos",
+      "website": "http://www.thetranspecos.com/",
+      "shows_count": 14,
+      "address": "915 Wyckoff Avenue Ridgewood, NY 11385",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Bowery Palace",
+      "website": "",
+      "shows_count": 13,
+      "address": "327 Bowery NYC, NY 10003",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Hart Bar",
+      "website": "",
+      "shows_count": 13,
+      "address": "538 Hart Street Brooklyn, NY 11221",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Metropolitan Museum of Art",
+      "website": "",
+      "shows_count": 13,
+      "address": "1000 5th avenue New York, NY 10028",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "92NY",
+      "website": "https://www.92ny.org/",
+      "shows_count": 12,
+      "address": "1395 Lexington Avenue New York, NY 10128",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Good Room",
+      "website": "http://www.goodroombk.com/",
+      "shows_count": 12,
+      "address": "98 Meserole Avenue Brooklyn, NY 11222",
+      "status": "ok",
+      "platforms": [
+        "Dice",
+        "Eventbrite",
+        "Resident Advisor"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://ra.co/events/2542113",
+      "approach": "Ticketing link found: Dice (verify shows are sold there)"
+    },
+    {
+      "name": "Main Drag Music",
+      "website": "",
+      "shows_count": 12,
+      "address": "330 Wythe Avenue Brooklyn, NY 11249",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Pianos",
+      "website": "http://www.pianosnyc.com/",
+      "shows_count": 12,
+      "address": "158 Ludlow Street New York, NY 10002",
+      "status": "blocked (403/429)",
+      "approach": "Blocked from this server; try a browser or the venue directly"
+    },
+    {
+      "name": "Stone Circle Theatre",
+      "website": "",
+      "shows_count": 11,
+      "address": "59-14 70th Ave Flushing, NY 11385",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "The Stone",
+      "website": "http://thestonenyc.com",
+      "shows_count": 11,
+      "address": "55 West 13th street New York, NY 10011",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Market Hotel",
+      "website": "https://www.markethotel.org/",
+      "shows_count": 10,
+      "address": "1142 Myrtle Ave Brooklyn, NY 11221",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/calendar",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "The Bell House",
+      "website": "http://www.thebellhouseny.com/",
+      "shows_count": 9,
+      "address": "149 7th Street Brooklyn, NY 11215",
+      "status": "ok",
+      "platforms": [
+        "Ticketmaster"
+      ],
+      "hasJsonLdEvent": true,
+      "calendarHref": "/shows",
+      "approach": "Ticketing link found: Ticketmaster (verify shows are sold there)"
+    },
+    {
+      "name": "Pioneer Works",
+      "website": "",
+      "shows_count": 8,
+      "address": "159 Pioneer Street Brooklyn, NY 11231",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "The Brooklyn Monarch",
+      "website": "",
+      "shows_count": 8,
+      "address": "23 Meadow Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Bar Freda",
+      "website": "",
+      "shows_count": 7,
+      "address": "801 Seneca Ave Ridgewood, NY 11385",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "DROM",
+      "website": "http://www.dromnyc.com",
+      "shows_count": 7,
+      "address": "85 Avenue A New York, NY 10009",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/events/",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "Littlefield",
+      "website": "http://www.littlefieldnyc.com",
+      "shows_count": 7,
+      "address": "635 Sackett Street *new location* Brooklyn, NY 11217",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Crown Hill Theatre",
+      "website": "",
+      "shows_count": 6,
+      "address": "750 Nostrand Avenue Brooklyn, NY 11216",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Footlight Underground at The Windjammer",
+      "website": "",
+      "shows_count": 6,
+      "address": "552 Grandview Avenue Ridgewood, NY 11385",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Xanadu",
+      "website": "",
+      "shows_count": 6,
+      "address": "262 Starr Street Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "99 Scott",
+      "website": "",
+      "shows_count": 5,
+      "address": "99 Scott Ave. Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Arlene's Grocery",
+      "website": "http://arlenesgrocerynyc.com/",
+      "shows_count": 5,
+      "address": "95 Stanton Street New York, NY 10002",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "David Rubenstein Atrium at Lincoln Center",
+      "website": "",
+      "shows_count": 5,
+      "address": "140 W 65th St New York, NY 10023",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Guggenheim Museum",
+      "website": "http://www.guggenheim.org/new_york_index.shtml",
+      "shows_count": 5,
+      "address": "1071 Fifth Avenue at 89th Street New York, NY 10128",
+      "status": "unreachable: HTTP 404 for http://www.guggenheim.org/new_york_index.shtml",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Joe's Pub",
+      "website": "http://www.joespub.com",
+      "shows_count": 5,
+      "address": "425 Lafayette Street New York, NY 10003-7021",
+      "status": "unreachable: HTTP 404 for http://www.joespub.com",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Lincoln Center - David Geffen Hall",
+      "website": "",
+      "shows_count": 5,
+      "address": "10 Lincoln Center Plaza New York, NY 10023",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Mama Tried",
+      "website": "",
+      "shows_count": 5,
+      "address": "787 3rd Ave Brooklyn, NY 11232",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "SILO Brooklyn",
+      "website": "https://www.silobrooklyn.com",
+      "shows_count": 5,
+      "address": "90 Scott Avenue Brooklyn, NY 11237",
+      "status": "ok",
+      "platforms": [
+        "Dice"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/events",
+      "approach": "Ticketing link found: Dice (verify shows are sold there)"
+    },
+    {
+      "name": "St. Ann & The Holy Trinity",
+      "website": "",
+      "shows_count": 5,
+      "address": "157 Montague Street Brooklyn, NY 11201",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "BAM: Brooklyn Academy of Music",
+      "website": "http://www.bam.org/",
+      "shows_count": 4,
+      "address": "30 Lafayette Avenue Brooklyn, NY 11217",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://newyorklivearts.org/event/toi-moi-tituba/",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "Cafe Wha?",
+      "website": "http://cafewha.com/",
+      "shows_count": 4,
+      "address": "115 Macdougal Street New York, NY 10012",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://www.cafewha.com/calendar",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "Dead Letter No. 9",
+      "website": "",
+      "shows_count": 4,
+      "address": "63 Grand Street Brooklyn, NY 11249",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Forest Hills Stadium",
+      "website": "",
+      "shows_count": 4,
+      "address": "1 Tennis Place Forest Hills, NY 11375",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "New York Society for Ethical Culture",
+      "website": "",
+      "shows_count": 4,
+      "address": "2 West 64th Street New York, NY 10025",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Nublu 151",
+      "website": "",
+      "shows_count": 4,
+      "address": "151 Avenue C New York, NY 10009",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Pacha New York",
+      "website": "",
+      "shows_count": 4,
+      "address": "140 Stewart Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Palladium Times Square",
+      "website": "",
+      "shows_count": 4,
+      "address": "1515 Broadway New York, NY 10036",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Radio City Music Hall",
+      "website": "http://www.radiocity.com",
+      "shows_count": 4,
+      "address": "1260 Sixth Avenue New York, NY 10020",
+      "status": "unreachable: fetch failed",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Brooklyn Storehouse",
+      "website": "",
+      "shows_count": 3,
+      "address": "Brooklyn Navy Yard Brooklyn, NY 11205",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Café Carlyle",
+      "website": "",
+      "shows_count": 3,
+      "address": "35 E 76th Street New York City, NY 10075",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "C'mon Everybody",
+      "website": "http://www.cmoneverybody.com/",
+      "shows_count": 3,
+      "address": "325 Franklin Avenue Brooklyn, NY 11238",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/events",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "First Unitarian Congregational Society",
+      "website": "",
+      "shows_count": 3,
+      "address": "116 Pierrepont Street Brooklyn, NY 11201",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Hammerstein Ballroom",
+      "website": "http://www.mcstudios.com",
+      "shows_count": 3,
+      "address": "311 West 34th Street New York, NY 10001",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "House of Yes",
+      "website": "",
+      "shows_count": 3,
+      "address": "2 Wyckoff Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Paragon",
+      "website": "https://www.paragonbroadway.com/",
+      "shows_count": 3,
+      "address": "990 Broadway Brooklyn, NY 11221",
+      "status": "ok",
+      "platforms": [
+        "Resident Advisor"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Ticketing link found: Resident Advisor (verify shows are sold there)"
+    },
+    {
+      "name": "The Bitter End",
+      "website": "",
+      "shows_count": 3,
+      "address": "147 Bleecker Street New York, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "The Metropolitan Pavilion",
+      "website": "",
+      "shows_count": 3,
+      "address": "125 West 18th Street New York, NY 10011",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "20 Meadow St",
+      "website": "",
+      "shows_count": 2,
+      "address": "20 Meadow Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Duggal Greenhouse - Brooklyn Navy Yard",
+      "website": "",
+      "shows_count": 2,
+      "address": "63 Flushing Avenue Brooklyn, NY 11205",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "H0L0",
+      "website": "",
+      "shows_count": 2,
+      "address": "1090 Wyckoff Ave Ridgewood, NY 11385",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "P.I.T.",
+      "website": "https://www.propertyistheft.org/",
+      "shows_count": 2,
+      "address": "411 South 5th Street Brooklyn, NY 11211",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/events",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "Silver Lining Lounge",
+      "website": "",
+      "shows_count": 2,
+      "address": "145 Bowery New York, NY 10002",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "St. John's Lutheran Church",
+      "website": "",
+      "shows_count": 2,
+      "address": "55 Milton St Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Strand Bookstore",
+      "website": "",
+      "shows_count": 2,
+      "address": "828 Broadway New York, NY 10003",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "The Rooftop at Pier 17",
+      "website": "",
+      "shows_count": 2,
+      "address": "89 South Street NYC, NY 10038",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Tompkins Square Park",
+      "website": "",
+      "shows_count": 2,
+      "address": "E 10th Street New York, NY 10009",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Whitney Museum",
+      "website": "http://whitney.org/",
+      "shows_count": 2,
+      "address": "99 Gansevoort Street New York, NY 10014",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/events",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "148 Frost Street",
+      "website": "",
+      "shows_count": 1,
+      "address": "148 Frost Street Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Bleecker Bell",
+      "website": "",
+      "shows_count": 1,
+      "address": "163 Bleecker St New York, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "BRIC House",
+      "website": "http://bricartsmedia.org/",
+      "shows_count": 1,
+      "address": "647 Fulton Street Brooklyn, NY 11217",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://bricartsmedia.org/event/jazzfest-2026/",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "Cherry Lane Theatre",
+      "website": "",
+      "shows_count": 1,
+      "address": "38 Commerce Street NYC, NY 10014",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "For The Record",
+      "website": "",
+      "shows_count": 1,
+      "address": "1107 Manhattan Ave Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Full Kit Garage",
+      "website": "",
+      "shows_count": 1,
+      "address": "38 Meadow Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Jalopy Theater",
+      "website": "",
+      "shows_count": 1,
+      "address": "315 Columbia St Brooklyn, NY 11201",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Los Depressos",
+      "website": "",
+      "shows_count": 1,
+      "address": "1271a Fulton Street Brooklyn, NY 11216",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Maria Hernandez Park",
+      "website": "",
+      "shows_count": 1,
+      "address": "Knickerbocker Ave. & Starr St. Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "MoMA PS1",
+      "website": "http://momaps1.org",
+      "shows_count": 1,
+      "address": "22-25 Jackson Ave Long Island City, NY 11101",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/en/calendar",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "No Such Thing",
+      "website": "",
+      "shows_count": 1,
+      "address": "352 Troutman Street Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Nublu Classic",
+      "website": "",
+      "shows_count": 1,
+      "address": "62 Avenue C New York, NY 10009",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Old First Church",
+      "website": "",
+      "shows_count": 1,
+      "address": "729 Carroll St Brooklyn, NY 11215",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Our Wicked Lady",
+      "website": "",
+      "shows_count": 1,
+      "address": "153 Morgan Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Pine Box Rock Shop",
+      "website": "",
+      "shows_count": 1,
+      "address": "12 Grattan Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "P&T Knitwear",
+      "website": "",
+      "shows_count": 1,
+      "address": "180 Orchard Street NYC, NY 10002",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Reforesters Laboratory",
+      "website": "",
+      "shows_count": 1,
+      "address": "147 Metropolitan Ave Brooklyn, NY 11249",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Rodrigue's Coffee House",
+      "website": "",
+      "shows_count": 1,
+      "address": "Fordham University Bronx, NY 10458",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "S.O.B.'s",
+      "website": "",
+      "shows_count": 1,
+      "address": "204 Varick Street New York, NY 10014",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Talon Bar",
+      "website": "",
+      "shows_count": 1,
+      "address": "220 Wyckoff Ave Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "The Cathedral of St. John the Divine",
+      "website": "",
+      "shows_count": 1,
+      "address": "1047 Amsterdam Avenue NYC, NY 10025",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "The Chocolate Factory",
+      "website": "",
+      "shows_count": 1,
+      "address": "70 Scott Ave Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "The Cobra Club",
+      "website": "http://cobraclubbk.com/",
+      "shows_count": 1,
+      "address": "6 Wyckoff Ave Brooklyn, NY 11237",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Under the K Bridge Park",
+      "website": "",
+      "shows_count": 1,
+      "address": "Van Dam Street & Meeker Ave Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Union Hall",
+      "website": "http://www.unionhallny.com",
+      "shows_count": 1,
+      "address": "702 Union Street (@ 5th Avenue) Brooklyn, NY 11215",
+      "status": "ok",
+      "platforms": [
+        "Eventbrite"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/calendar",
+      "approach": "Ticketing link found: Eventbrite (verify shows are sold there)"
+    },
+    {
+      "name": "Young Ethel's",
+      "website": "",
+      "shows_count": 1,
+      "address": "506 5th Ave Brooklyn, NY 11215",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "100 Feast 萬豪大酒家",
+      "website": "",
+      "shows_count": 0,
+      "address": "100 E Broadway, 2nd Floor New York, NY 10002",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "101 Diesel Pop-Up",
+      "website": "",
+      "shows_count": 0,
+      "address": "101 Bedford Avenue Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "101 Wilson Bar",
+      "website": "",
+      "shows_count": 0,
+      "address": "101 Wilson Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "1031 Grand Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "1031 Grand Street Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "104 Emerson Place",
+      "website": "",
+      "shows_count": 0,
+      "address": "104 Emerson Place Brooklyn, NY 11205",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "107 Suffolk Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "107 Suffolk Street New York, NY 10002",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "110 Troutman street",
+      "website": "",
+      "shows_count": 0,
+      "address": "110 Troutman street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "114 Forrest Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "114 Forrest Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "119 Ingraham",
+      "website": "",
+      "shows_count": 0,
+      "address": "119 Ingraham Street @ Porter Ave Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "123 Community Space",
+      "website": "",
+      "shows_count": 0,
+      "address": "1087 Broadway at Malcom X Brooklyn, NY 11221",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "127 Tompkins",
+      "website": "",
+      "shows_count": 0,
+      "address": "127 Tompkins Ave Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "1312 Decatur",
+      "website": "",
+      "shows_count": 0,
+      "address": "1312 Decatur St Brooklyn, NY 11207",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "131 Chrystie",
+      "website": "",
+      "shows_count": 0,
+      "address": "131 Chrystie St NYC, NY 10002",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "13 Thames",
+      "website": "",
+      "shows_count": 0,
+      "address": "13 Thames St. 3rd FLR Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "140 2nd Avenue",
+      "website": "",
+      "shows_count": 0,
+      "address": "140 2nd Avenue 503 New York, NY 10003",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "14 Steuben Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "14 Steuben Street Brooklyn, NY 11205",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "14th Street Park",
+      "website": "",
+      "shows_count": 0,
+      "address": "W 14th Street & 10th Avenue New York, NY 10011",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "14 Verona Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "14 Verona Street Apt #1B Brooklyn, NY 11231",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "154 Scott Ave",
+      "website": "",
+      "shows_count": 0,
+      "address": "154 Scott Ave Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "155 Freeman Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "155 Freeman Street Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "155 Lafayette",
+      "website": "",
+      "shows_count": 0,
+      "address": "155 Lafayette St NYC, NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "169 Bar",
+      "website": "http://www.169bar.com",
+      "shows_count": 0,
+      "address": "169 E. Broadway New York, NY 10002",
+      "status": "blocked (403/429)",
+      "approach": "Blocked from this server; try a browser or the venue directly"
+    },
+    {
+      "name": "171 Lombardy",
+      "website": "",
+      "shows_count": 0,
+      "address": "171 Lombardy Street Greenpoint Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "17 Frost Gallery",
+      "website": "",
+      "shows_count": 0,
+      "address": "17 Frost Street Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "180 Scholes",
+      "website": "",
+      "shows_count": 0,
+      "address": "180 Scholes Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "18 Java Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "18 Java Street Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "18th Ward Brewing",
+      "website": "",
+      "shows_count": 0,
+      "address": "300 Richardson St. Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "192 Front Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "192 Front Street New York, NY 10038",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "1 Hotel Brooklyn Bridge",
+      "website": "",
+      "shows_count": 0,
+      "address": "60 Furman Street Brooklyn, NY 11201",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "201 Mulberry Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "New York NY 10012,",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "217 Meserole",
+      "website": "",
+      "shows_count": 0,
+      "address": "217 Meserole Brooklyn, NY 11222-2402",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "22 Boerum Place",
+      "website": "",
+      "shows_count": 0,
+      "address": "22 Boerum Place Brooklyn, NY 11201",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "23 Bogart Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "23 Bogart Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "247 North 10th street",
+      "website": "",
+      "shows_count": 0,
+      "address": "247 North 10th street @ Union Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "252 Norman",
+      "website": "",
+      "shows_count": 0,
+      "address": "252 Norman Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "255 McKibben St",
+      "website": "https://www.facebook.com/events/1418348335043468/",
+      "shows_count": 0,
+      "address": "255 McKibben St Brooklyn, NY 11206",
+      "status": "unreachable: HTTP 400 for https://www.facebook.com/events/141834833504346",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "255 McKibbin st",
+      "website": "",
+      "shows_count": 0,
+      "address": "255 McKibbin st Apartment 106 Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "257 Washington Avenue",
+      "website": "",
+      "shows_count": 0,
+      "address": "257 Washinton Avenue Brooklyn, NY 11205",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "258 W 118th Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "258 W 118th Street NYC, NY 10026",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "25 Franklin St",
+      "website": "",
+      "shows_count": 0,
+      "address": "45 Franklin St Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "260 Norman",
+      "website": "",
+      "shows_count": 0,
+      "address": "260 Norman btwn Monitor and Kingsland Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "268 Meserole",
+      "website": "",
+      "shows_count": 0,
+      "address": "268 Meserole Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "269 Kent",
+      "website": "",
+      "shows_count": 0,
+      "address": "269 Kent Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "271 Starr Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "271 Starr Street Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "272 Seigel",
+      "website": "",
+      "shows_count": 0,
+      "address": "272 Seigel Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "285 Kent Avenue (R.I.P.)",
+      "website": "",
+      "shows_count": 0,
+      "address": "285 Kent Avenue Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "287 Kent Avenue",
+      "website": "",
+      "shows_count": 0,
+      "address": "287 Kent Avenue Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "299 Meserole Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "299 Meserole Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "29 Wythe St.",
+      "website": "",
+      "shows_count": 0,
+      "address": "29 Wythe St. Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "2 Noble Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "2 Noble Street Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "2 Wyckoff Avenue",
+      "website": "",
+      "shows_count": 0,
+      "address": "2 Wyckoff Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "305 Ten Eyck",
+      "website": "",
+      "shows_count": 0,
+      "address": "305 Ten Eyck Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "314 Canal",
+      "website": "",
+      "shows_count": 0,
+      "address": "314 Canal Street NYC , NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "314 Scholes",
+      "website": "",
+      "shows_count": 0,
+      "address": "314 Scholes Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "315 Meserole",
+      "website": "",
+      "shows_count": 0,
+      "address": "315 Meserole Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "315 Ten Eyck Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "315 Ten Eyck Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "316 Siegel Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "Rooftop Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "31 Perry Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "31 Perry Street New York, NY 10014",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "32B",
+      "website": "",
+      "shows_count": 0,
+      "address": "32B South 1st Street Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "338 Moffat",
+      "website": "",
+      "shows_count": 0,
+      "address": "338 Moffat Street Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "347 Broome",
+      "website": "",
+      "shows_count": 0,
+      "address": "347 Broome St NYC, NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "373 South 1st St",
+      "website": "",
+      "shows_count": 0,
+      "address": "373 South 1st St Brookyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "3DB",
+      "website": "",
+      "shows_count": 0,
+      "address": "260 Meserole St Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "3 Dollar Bill",
+      "website": "https://www.3dollarbillbk.com/",
+      "shows_count": 0,
+      "address": "260 Meserole Street Brooklyn, NY 11206",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "410 W. 16th Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "410 W. 16th Street New York, NY 10011",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "424 3rd Ave",
+      "website": "",
+      "shows_count": 0,
+      "address": "424 3rd Avenue Brooklyn, NY 11215",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "430 Grand Ave",
+      "website": "",
+      "shows_count": 0,
+      "address": "430 Grand Ave Brooklyn, NY 11238",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "444 Club",
+      "website": "",
+      "shows_count": 0,
+      "address": "4 Irving Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "44 Mercer Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "44 Mercer Street New York, NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "450 Union Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "450 Union Street Brooklyn, NY 11231",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "459 Keap Street",
+      "website": "http://www.makemusicny.org/",
+      "shows_count": 0,
+      "address": "459 Keap Street at Ainsley Brooklyn, NY 11211",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "45 Bleecker St Theater",
+      "website": "",
+      "shows_count": 0,
+      "address": "45 Bleecker St New York, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "475 Greenwich",
+      "website": "",
+      "shows_count": 0,
+      "address": "475 Greenwich st NYC, NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "47 Canal",
+      "website": "",
+      "shows_count": 0,
+      "address": "47 Canal NYC, NY 10002",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "49 Shade",
+      "website": "",
+      "shows_count": 0,
+      "address": "Brooklyn, NY 11216",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "49 Wykcoff Avenue",
+      "website": "",
+      "shows_count": 0,
+      "address": "49 Wykcoff Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "4 Irving",
+      "website": "",
+      "shows_count": 0,
+      "address": "4 Irving Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "501 Union Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "501 Union Street Brooklyn, NY 11217",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "5050 Skate Park",
+      "website": "",
+      "shows_count": 0,
+      "address": "354 Front Street Staten Island, NY 10304",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "50 Kent",
+      "website": "",
+      "shows_count": 0,
+      "address": "N. 12th Street and Kent Avenue Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "50 N 3rd St.",
+      "website": "",
+      "shows_count": 0,
+      "address": "50 N 3rd St. Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "52 Walker",
+      "website": "",
+      "shows_count": 0,
+      "address": "52 Walker Street NYC, NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "538 Johnson Avenue",
+      "website": "",
+      "shows_count": 0,
+      "address": "538 Johnson Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "55 Walker Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "55 Walker Street New York, NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "603^",
+      "website": "",
+      "shows_count": 0,
+      "address": "Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "61 N. 6th Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "61 N. 6th Street Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "637 W. 50th Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "637 W. 50th Street New York, NY 10019",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "66 Greene Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "66 Greene St NYC, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "66th Congress",
+      "website": "",
+      "shows_count": 0,
+      "address": "66 Greenpoint Ave Greenpoint, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "6th Street & Avenue B Community Garden",
+      "website": "",
+      "shows_count": 0,
+      "address": "6th Street & Avenue B New York, NY 10009",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "70 N. 6th street",
+      "website": "",
+      "shows_count": 0,
+      "address": "70 N. 6th street Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "70 North 6th street",
+      "website": "",
+      "shows_count": 0,
+      "address": "70 North 6th street Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "74 Wythe",
+      "website": "",
+      "shows_count": 0,
+      "address": "74 Wythe Avenue Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "75 Stewart Avenue",
+      "website": "",
+      "shows_count": 0,
+      "address": "75 Stewart Avenue Apt 415 Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "7 Dunham Gallery",
+      "website": "",
+      "shows_count": 0,
+      "address": "7 Dunham Place Brooklyn, NY 11249",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "7 Scott Avenue",
+      "website": "",
+      "shows_count": 0,
+      "address": "7 Scott Avenue Brooklyn, NY 11237",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "851 6th Avenue",
+      "website": "",
+      "shows_count": 0,
+      "address": "851 6th Avenue New York, NY 10001",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "88 Porter",
+      "website": "",
+      "shows_count": 0,
+      "address": "88 Porter enter on Ingraham Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "89 Varet Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "89 Varet Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "92YTribeca (R.I.P.)",
+      "website": "http://www.92y.org/92yTribeca/default.asp?92YT_global=Tribeca_home",
+      "shows_count": 0,
+      "address": "200 Hudson Street New York, NY 10013",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "94 Evergreen",
+      "website": "",
+      "shows_count": 0,
+      "address": "94 Evergreen Avenue Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "96 Lafayette Street",
+      "website": "",
+      "shows_count": 0,
+      "address": "96 Lafayette Street New York, NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "98 Orchard Gallery",
+      "website": "",
+      "shows_count": 0,
+      "address": "98 Orchard Street New York, NY 10002",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "99 Attorney St",
+      "website": "",
+      "shows_count": 0,
+      "address": "99 Attorney Street NYC, NY 10002",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Aboard The Mary Whelan",
+      "website": "",
+      "shows_count": 0,
+      "address": "202 Clinton Wharf Pier 11 Brooklyn, NY 11231",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Academy Records",
+      "website": "",
+      "shows_count": 0,
+      "address": "96 N. 6th Street Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Ace Hotel Brooklyn",
+      "website": "",
+      "shows_count": 0,
+      "address": "252 Schermerhorn Street Brooklyn, NY 11217",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Ace of Clubs",
+      "website": "http://www.aceofclubsnyc.com",
+      "shows_count": 0,
+      "address": "9 Great Jones Street New York, NY 10012",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Acme Underground (R.I.P.)",
+      "website": "",
+      "shows_count": 0,
+      "address": "9 Great Jones Street New York, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Acura at SIR Stage37",
+      "website": "",
+      "shows_count": 0,
+      "address": "508 West 37th Street NYC, NY 10018",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Adelphi University Performing Arts Center",
+      "website": "",
+      "shows_count": 0,
+      "address": "1 South Avenue Garden City, NY 11530",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Adidas Originals SoHo Store",
+      "website": "",
+      "shows_count": 0,
+      "address": "136 Wooster Street New York, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "A/D/O",
+      "website": "",
+      "shows_count": 0,
+      "address": "29 Norman Avenue Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Afro-Punk Skate Park",
+      "website": "http://community.afropunk.com/page/afropunk-2009",
+      "shows_count": 0,
+      "address": "Flatbush Ave & Lafayette Ave Brooklyn, NY 11217",
+      "status": "unreachable: fetch failed",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "AG Studios",
+      "website": "",
+      "shows_count": 0,
+      "address": "52 Walker Street Floor 3 NYC, NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Aisle of Meadow Festival",
+      "website": "",
+      "shows_count": 0,
+      "address": "14 Meadow Street Brooklyn, NY 11211",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Alamo Drafthouse",
+      "website": "",
+      "shows_count": 0,
+      "address": "445 Albee Square W #4 Brooklyn, NY 11201",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Alaska Bar",
+      "website": "",
+      "shows_count": 0,
+      "address": "35 Ingraham Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "AllSaints",
+      "website": "",
+      "shows_count": 0,
+      "address": "521 Broadway New York, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "All The Kings Horses",
+      "website": "",
+      "shows_count": 0,
+      "address": "521 E 12th St NYC, NY 10009",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Aloft Hotel",
+      "website": "http://www.starwoodhotels.com/alofthotels/property/overview/index.html?propertyID=3192",
+      "shows_count": 0,
+      "address": "216 Duffield Street Brooklyn, NY 11201",
+      "status": "unreachable: HTTP 404 for http://www.starwoodhotels.com/alofthotels/prope",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Alvin Johnson/J.M. Kaplan Hall",
+      "website": "",
+      "shows_count": 0,
+      "address": "66 West 12th Street New York City, NY 10011",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Amant",
+      "website": "",
+      "shows_count": 0,
+      "address": "306 Maujer Street Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "AMC Empire 25 Movie Theater",
+      "website": "",
+      "shows_count": 0,
+      "address": "234 W. 42nd Street NYC, NY 10036",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "American Apparel",
+      "website": "",
+      "shows_count": 0,
+      "address": "314 Flatbush Ave. Park Slope Brooklyn, NY 11217",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "American Beauty NYC",
+      "website": "",
+      "shows_count": 0,
+      "address": "251 West 30th Street New York, NY 10001",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "American Eagle",
+      "website": "",
+      "shows_count": 0,
+      "address": "599 Broadway New York, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "American Museum of Natural History",
+      "website": "http://www.amnh.org",
+      "shows_count": 0,
+      "address": "Central Park West at 79th Street New York, NY 10024",
+      "status": "blocked (403/429)",
+      "approach": "Blocked from this server; try a browser or the venue directly"
+    },
+    {
+      "name": "American Veterans Memorial Pier",
+      "website": "",
+      "shows_count": 0,
+      "address": "Bay Ridge Avenue & Shore Road Brooklyn, NY 11209",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Amuse",
+      "website": "",
+      "shows_count": 0,
+      "address": "3050 Stillwell Avenue Coney Island Art Walls Brooklyn, NY 11224",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Analog BKNY",
+      "website": "http://www.analogbkny.com/",
+      "shows_count": 0,
+      "address": "177 2nd Avenue Brooklyn, NY 11215",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "",
+      "approach": "Unclear: JS-rendered or no public listing; check manually"
+    },
+    {
+      "name": "Anthology Film Archives",
+      "website": "http://www.anthologyfilmarchives.org/",
+      "shows_count": 0,
+      "address": "32 Second Avenue New York, NY 10003",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "/film_screenings/calendar",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "Antidote Outpost + Apothecary",
+      "website": "",
+      "shows_count": 0,
+      "address": "381 McGuinness Blvd Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Anyone Comics",
+      "website": "",
+      "shows_count": 0,
+      "address": "1216 Union Street Brooklyn, NY 11225",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Apollo Theater",
+      "website": "http://www.apollotheater.com/",
+      "shows_count": 0,
+      "address": "253 West 125th Street New York, NY 10027",
+      "status": "unreachable: This operation was aborted",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Apple Store 14th Street",
+      "website": "http://www.apple.com/retail/west14thstreet/",
+      "shows_count": 0,
+      "address": "401 W 14th Street New York, NY 10014",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://www.apple.com/today/event/spotlight-apple-intelligence?cid=rem-us-taa-retail-spotlight-apple-intelligence",
+      "approach": "Parse __NEXT_DATA__ payload"
+    },
+    {
+      "name": "Apple Store (Midtown)",
+      "website": "",
+      "shows_count": 0,
+      "address": "767 Fifth Avenue New York, NY 10153",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Apple Store Soho",
+      "website": "http://www.apple.com/retail/soho/",
+      "shows_count": 0,
+      "address": "103 Prince Street New York, NY 10012",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://www.apple.com/today/event/spotlight-apple-intelligence?cid=rem-us-taa-retail-spotlight-apple-intelligence",
+      "approach": "Parse __NEXT_DATA__ payload"
+    },
+    {
+      "name": "Apple Store - Williamsburg",
+      "website": "",
+      "shows_count": 0,
+      "address": "247 Bedford Ave Brooklyn, NY 11215",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Archestratus Books + Foods",
+      "website": "",
+      "shows_count": 0,
+      "address": "160 Huron Street Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Arlo Williamsburg Ballroom",
+      "website": "",
+      "shows_count": 0,
+      "address": "96 Wythe Avenue Brooklyn, NY 11249",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Ars Nova",
+      "website": "http://arsnovanyc.com/",
+      "shows_count": 0,
+      "address": "511 West 54th Street New York, NY 10019",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://arsnovanyc.com/events/ronnies-big-idea/",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "Art & Design High School",
+      "website": "",
+      "shows_count": 0,
+      "address": "245 East 56th Street New York, NY 10022",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Arthur Ross Pinetum ~ Central Park",
+      "website": "",
+      "shows_count": 0,
+      "address": "84th and 86th Street Transverse New York, NY 10024",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Artists Space Books & Talks",
+      "website": "",
+      "shows_count": 0,
+      "address": "55 Walker Street New York, NY 10013",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Artsdistrict Brooklyn",
+      "website": "",
+      "shows_count": 0,
+      "address": "25 Frankin Street Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Artspace",
+      "website": "",
+      "shows_count": 0,
+      "address": "215 Chrystie St NYC, NY 10002",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Ascension Episcopal Church",
+      "website": "",
+      "shows_count": 0,
+      "address": "127 Kent Street Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Asia Society Museum",
+      "website": "",
+      "shows_count": 0,
+      "address": "725 Park Avenue New York, NY 10021",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Asterisk* Art Space (R.I.P.)",
+      "website": "",
+      "shows_count": 0,
+      "address": "258 Johnson Ave. Brooklyn, NY 11206",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Asylum",
+      "website": "",
+      "shows_count": 0,
+      "address": "307 W. 26th Street NYC, NY 10001",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Atlantic Avenue Warehouse",
+      "website": "",
+      "shows_count": 0,
+      "address": "1260 Atlantic Avenue Brooklyn, NY 11216",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Atoms Pop-Up",
+      "website": "https://atoms.com/pages/popup?utm_source=OMR&utm_medium=content&utm_campaign=OMR_popup",
+      "shows_count": 0,
+      "address": "264 Elizabeth Street New York, NY 10012",
+      "status": "unreachable: HTTP 500 for https://atoms.com/pages/popup?utm_source=OMR&ut",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Autumn Bowl",
+      "website": "",
+      "shows_count": 0,
+      "address": "67 West Street Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Avalon",
+      "website": "",
+      "shows_count": 0,
+      "address": "47 West 20th Street New York, NY 10010",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Avant Gardner",
+      "website": "https://www.avant-gardner.com/",
+      "shows_count": 0,
+      "address": "140 Stewart Avenue Brooklyn, NY 11237",
+      "status": "unreachable: HTTP 404 for https://www.avant-gardner.com/",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Aviv (R.I.P.)",
+      "website": "",
+      "shows_count": 0,
+      "address": "496 Morgan Avenue Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Babycastles",
+      "website": "",
+      "shows_count": 0,
+      "address": "145 West 14th Street New York, NY 10011",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Backbar at The Bedford",
+      "website": "",
+      "shows_count": 0,
+      "address": "110 Bedford Ave Brooklyn, NY 11249",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Backstage Bar",
+      "website": "",
+      "shows_count": 0,
+      "address": "154 Orchard Street New York, NY 10004",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Backyard Picnic",
+      "website": "",
+      "shows_count": 0,
+      "address": "402½ Park Avenue Brooklyn, NY 11205",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Baker Falls",
+      "website": "https://bakerfalls.com/",
+      "shows_count": 0,
+      "address": "192 Allen Street New York, NY 10002",
+      "status": "ok",
+      "platforms": [],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://bakerfalls.com/calendar/",
+      "approach": "Scrape calendar page (custom parser)"
+    },
+    {
+      "name": "Bang & Olufsen",
+      "website": "",
+      "shows_count": 0,
+      "address": "121 Spring St NYC, NY 10012",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Banjo Jim's",
+      "website": "http://www.banjojims.com/",
+      "shows_count": 0,
+      "address": "700 East 9th Street New York, NY 10009",
+      "status": "unreachable: fetch failed",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Banker's Anchor",
+      "website": "",
+      "shows_count": 0,
+      "address": "93-75 N 15th St Brooklyn, NY 11222",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Baranquilla Studios",
+      "website": "",
+      "shows_count": 0,
+      "address": "Brooklyn, NY 11207",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Barbès",
+      "website": "http://www.barbesbrooklyn.com/",
+      "shows_count": 0,
+      "address": "376 9th Street Brooklyn, NY 11215",
+      "status": "ok",
+      "platforms": [
+        "Dice"
+      ],
+      "hasJsonLdEvent": false,
+      "calendarHref": "https://www.barbesbrooklyn.com/events",
+      "approach": "Ticketing link found: Dice (verify shows are sold there)"
+    },
+    {
+      "name": "Bar East",
+      "website": "",
+      "shows_count": 0,
+      "address": "1733 1st Avenue @ 90th street New York, NY 10128",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Bar Milagro",
+      "website": "",
+      "shows_count": 0,
+      "address": "29 Dunham Place Brooklyn, NY 11249",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Barnard College",
+      "website": "http://www.barnard.edu/cao/mcintosh.html",
+      "shows_count": 0,
+      "address": "3009 Broadway New York, NY 10027",
+      "status": "unreachable: HTTP 404 for http://www.barnard.edu/cao/mcintosh.html",
+      "approach": "Unreachable"
+    },
+    {
+      "name": "Barnes & Noble",
+      "website": "",
+      "shows_count": 0,
+      "address": "82nd street & Broadway NYC, NY 10024",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Barnes & Noble -- Tribeca",
+      "website": "",
+      "shows_count": 0,
+      "address": "97 Warren Street New York, NY 10007",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    },
+    {
+      "name": "Barnes & Noble -- UES",
+      "website": "",
+      "shows_count": 0,
+      "address": "150 East 86th Street NYC, NY 10028",
+      "status": "no website",
+      "approach": "Add website to directory first"
+    }
+  ]
+}
