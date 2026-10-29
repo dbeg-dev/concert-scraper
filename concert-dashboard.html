@@ -17,6 +17,9 @@
   input[type=search] { flex:1 1 220px; padding:9px 12px; border:1px solid var(--line); border-radius:8px; background:var(--card); color:var(--ink); font:inherit; }
   button.chip { padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink); cursor:pointer; font:inherit; font-size:13px; }
   button.chip[aria-pressed="true"] { background:var(--accent); color:var(--bg); border-color:var(--accent); }
+  input[type=date] { padding:6px 10px; border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink); font:inherit; font-size:13px; color-scheme: light dark; }
+  input[type=date].on { background:var(--accent); color:var(--bg); border-color:var(--accent); }
+  .count { color:var(--muted); font-size:13px; margin:0 0 10px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin-bottom:10px; display:grid; grid-template-columns: 1fr auto; gap:6px 16px; }
   .title { font-weight:600; font-size:16px; }
   .meta { color:var(--muted); font-size:13px; }
@@ -36,7 +39,7 @@
 <body>
 <div class="wrap">
   <h1>NYC Concert Calendar</h1>
-  <p class="sub">Upcoming shows from Dice, Ticketmaster, SmallsLIVE, Mercury Lounge, and Lincoln Center. Updated daily.</p>
+  <p class="sub">Upcoming shows from Dice, Ticketmaster, SmallsLIVE, Mercury Lounge, Village Vanguard, Ohmyrockness, and Lincoln Center. Updated daily.</p>
 
   <div class="bar">
     <input type="search" id="q" placeholder="Search artist, venue, or show" aria-label="Search">
@@ -49,6 +52,18 @@
     <button class="chip" data-genre="Opera" aria-pressed="false">Opera</button>
     <button class="chip" data-genre="Other" aria-pressed="false">Other</button>
   </div>
+
+  <div class="bar" id="when" role="group" aria-label="When">
+    <button class="chip" data-when="all" aria-pressed="true">Any day</button>
+    <button class="chip" data-when="tonight" aria-pressed="false">Tonight</button>
+    <button class="chip" data-when="tomorrow" aria-pressed="false">Tomorrow</button>
+    <button class="chip" data-when="week" aria-pressed="false">Next 7 days</button>
+    <button class="chip" data-when="weekend" aria-pressed="false">This weekend</button>
+    <button class="chip" data-when="month" aria-pressed="false">This month</button>
+    <button class="chip" data-when="nextmonth" aria-pressed="false">Next month</button>
+    <input type="date" id="day" aria-label="Pick a specific day">
+  </div>
+  <p class="count" id="count"></p>
 
   <div id="list" aria-live="polite"><div class="empty">Loading shows…</div></div>
   <footer id="foot"></footer>
@@ -115,14 +130,47 @@ function recommendation(e, today) {
 // ---- State ----------------------------------------------------------------
 let events = [];
 let genre = 'All';
+let when = 'all';
+
+// Date window for the "When" filter, as [first day, last day] inclusive.
+function addDays(iso, n) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(Date.UTC(y, m - 1, d + n)).toISOString().slice(0, 10);
+}
+function whenRange(today) {
+  const [y, m] = today.split('-').map(Number);
+  const dow = new Date(today + 'T12:00:00Z').getUTCDay(); // 0 Sun ... 6 Sat
+  const monthEnd = (yy, mm) => new Date(Date.UTC(yy, mm, 0)).toISOString().slice(0, 10);
+  switch (when) {
+    case 'tonight': return [today, today];
+    case 'tomorrow': { const t = addDays(today, 1); return [t, t]; }
+    case 'week': return [today, addDays(today, 6)];
+    case 'weekend': {
+      if (dow === 0) return [today, today];             // Sunday: just today
+      if (dow === 6) return [today, addDays(today, 1)]; // Saturday: Sat and Sun
+      return [addDays(today, 5 - dow), addDays(today, 7 - dow)]; // Fri to Sun
+    }
+    case 'month': return [today, monthEnd(y, m)];
+    case 'nextmonth': {
+      const ny = m === 12 ? y + 1 : y, nm = m === 12 ? 1 : m + 1;
+      return [`${ny}-${String(nm).padStart(2, '0')}-01`, monthEnd(ny, nm)];
+    }
+    default:
+      if (/^\d{4}-\d{2}-\d{2}$/.test(when)) return [when, when];
+      return null;
+  }
+}
 
 function render() {
   const q = document.getElementById('q').value.trim().toLowerCase();
   const today = todayNY();
+  const range = whenRange(today);
   const list = events.filter((e) =>
     (genre === 'All' || e.genre === genre) &&
+    (!range || (e.date >= range[0] && e.date <= range[1])) &&
     (!q || `${e.title} ${e.artist} ${e.venue}`.toLowerCase().includes(q)));
   const el = document.getElementById('list');
+  document.getElementById('count').textContent = `${list.length.toLocaleString('en-US')} show${list.length === 1 ? '' : 's'}${range ? (range[0] === range[1] ? ' on ' + fmtDate(range[0]) : ' from ' + fmtDate(range[0]) + ' to ' + fmtDate(range[1])) : ''}`;
   if (!list.length) { el.innerHTML = '<div class="empty">No shows match.</div>'; return; }
   el.innerHTML = list.map((e) => {
     const rec = recommendation(e, today);
@@ -181,6 +229,23 @@ document.getElementById('genres').addEventListener('click', (ev) => {
   document.querySelectorAll('#genres button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
   render();
 });
+document.getElementById('when').addEventListener('click', (ev) => {
+  const btn = ev.target.closest('button[data-when]');
+  if (!btn) return;
+  when = btn.dataset.when;
+  document.getElementById('day').value = '';
+  document.getElementById('day').classList.remove('on');
+  document.querySelectorAll('#when button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+  render();
+});
+document.getElementById('day').addEventListener('change', (ev) => {
+  const v = ev.target.value;
+  when = v || 'all';
+  ev.target.classList.toggle('on', !!v);
+  document.querySelectorAll('#when button').forEach((b) => b.setAttribute('aria-pressed', String(!v && b.dataset.when === 'all')));
+  render();
+});
+document.getElementById('day').min = todayNY();
 load();
 setInterval(load, 15 * 60 * 1000);
 </script>
