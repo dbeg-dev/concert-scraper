@@ -169,6 +169,11 @@ test('Enrich: parses the model reply and clamps ratings', () => {
   assert.strictEqual(combinedScore({ reviews: 5, rarity: 5, significance: 5, hype: 5 }), 100);
   assert.strictEqual(combinedScore({ reviews: 1, rarity: 1, significance: 1, hype: 1 }), 0);
   assert.throws(() => parseReply('no json here'));
+  const must = parseReply('{"description":"A.","press":"NYT Critic’s Pick","fans_of":"X, Y","cant_miss":true,"reviews":5,"rarity":5,"significance":5,"hype":4,"confidence":"high"}');
+  assert.strictEqual(must.cantMiss, true);
+  assert.strictEqual(must.press, 'NYT Critic’s Pick');
+  const thin = parseReply('{"description":"Little found.","cant_miss":true,"reviews":2,"rarity":2,"significance":2,"hype":2,"confidence":"low"}');
+  assert.strictEqual(thin.cantMiss, false, 'thin research never earns can’t miss');
 });
 
 let failed = 0;

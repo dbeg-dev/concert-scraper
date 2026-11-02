@@ -61,11 +61,21 @@ new one. It writes a two-sentence description, a one-line reason to go, and four
 | Hype | Current buzz: new album, sellouts, press |
 
 Score = 30% reviews, 20% rarity, 25% significance, 25% hype, scaled to 0-100.
-The dashboard sorts by it ("Top picks first") and flags 70+ as a top pick.
+The research also writes a press line (outlet or award, only when found), a
+"for fans of" line, and a strict can't-miss flag (roughly one show in ten).
+
+The dashboard groups shows into three tiers:
+
+- **Can't miss**: flagged can't miss with a score of 65+, or any score of 82+.
+  Featured card with press, why, and fans-of lines.
+- **Highly reviewed**: reviews 4/5 or better, or a score of 62+.
+- **Also playing**: everything else, shown compact.
+
+"Can't miss only" filters to the top tier. "By date" drops the sections.
 
 Each show is researched once, then refreshed every 21 days while it stays on
 the calendar. Setup: add an `ANTHROPIC_API_KEY` repo secret. Optional:
-`ENRICH_MODEL` (default `claude-haiku-5-5`) and `ENRICH_MAX` (default 120 per
+`ENRICH_MODEL` (default `claude-haiku-5-5`) and `ENRICH_MAX` (default 300 per
 run). To backfill without re-scraping: `npm run enrich`.
 
 ## Daily run

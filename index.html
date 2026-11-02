@@ -49,6 +49,29 @@
   details.dates ul { margin:6px 0 0; padding-left:18px; }
   details.dates li { margin:2px 0; }
   details.dates a { color:var(--ink); }
+  :root { --must:#b4361f; --must-bg:#fbf1ee; --rated:#1f7a3d; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --must:#ff8a70; --must-bg:#2a1d19; --rated:#6fd394; } }
+  :root[data-theme="dark"] { --must:#ff8a70; --must-bg:#2a1d19; --rated:#6fd394; }
+  .section-head { margin:26px 0 4px; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+  .section-head.must { color:var(--must); }
+  .section-head.rated { color:var(--rated); }
+  .section-head.rest { color:var(--muted); }
+  .section-sub { margin:0 0 12px; color:var(--muted); font-size:13px; }
+  .card.must { border:1px solid var(--must); border-left:5px solid var(--must); background:var(--must-bg); padding:18px 18px 16px; }
+  .card.must .title { font-size:19px; }
+  .card.must .desc { font-size:15px; }
+  .card.rated { border-left:4px solid var(--rated); }
+  .card.rest { padding:10px 14px; }
+  .card.rest .title { font-size:15px; font-weight:600; }
+  .card.rest .desc { color:var(--muted); font-size:13px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .card.rest .desc:hover { -webkit-line-clamp:unset; }
+  .tier { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; padding:3px 8px; border-radius:4px; white-space:nowrap; }
+  .tier.must { background:var(--must); color:#fff; }
+  .tier.rated { border:1px solid var(--rated); color:var(--rated); }
+  .press { grid-column:1 / -1; margin:0; font-size:13px; }
+  .press b { color:var(--rated); font-weight:600; }
+  .fans { grid-column:1 / -1; margin:0; font-size:12px; color:var(--muted); }
+  .pending { grid-column:1 / -1; margin:0; font-size:12px; color:var(--muted); font-style:italic; }
   footer { margin-top: 24px; color: var(--muted); font-size: 12px; text-align:center; }
   @media (max-width:560px) { .card { grid-template-columns: 1fr; } }
 </style>
@@ -86,7 +109,8 @@
     <input type="date" id="day" aria-label="Pick a specific day">
   </div>
   <div class="bar" id="sort" role="group" aria-label="Sort">
-    <button class="chip" data-sort="top" aria-pressed="true">Top picks first</button>
+    <button class="chip" data-sort="top" aria-pressed="true">Our picks first</button>
+    <button class="chip" data-sort="must" aria-pressed="false">Can’t miss only</button>
     <button class="chip" data-sort="date" aria-pressed="false">By date</button>
   </div>
   <p class="count" id="count"></p>
@@ -247,6 +271,21 @@ function showRec(dates, today) {
     (recs.every((r) => r && r.cls === 'soldout') ? recs[0] : null);
 }
 
+// Can't miss: the research flagged it and it scores well, or it scores very high.
+// Highly reviewed: strong critical reputation. Everything else: also playing.
+function tierOf(r) {
+  if (!r) return 'rest';
+  const score = Number(r.Score) || 0;
+  if ((r.CantMiss === 'yes' && score >= 65) || score >= 82) return 'must';
+  if (Number(r.Reviews) >= 4 || score >= 62) return 'rated';
+  return 'rest';
+}
+const TIERS = {
+  must: ['Can’t miss', 'Rare, landmark, or exceptional nights. Book these.'],
+  rated: ['Highly reviewed', 'Acts and productions with real critical weight.'],
+  rest: ['Also playing', 'Everything else on the calendar.'],
+};
+
 const SIGNALS = [['Reviews', 'Acclaimed'], ['Rarity', 'Rare in NYC'], ['Significance', 'Special night'], ['Hype', 'Buzzing']];
 
 function render() {
@@ -259,20 +298,35 @@ function render() {
     const hay = `${s.title} ${s.artist} ${s.dates.map((e) => e.venue).join(' ')}`.toLowerCase();
     if (q && !hay.includes(q)) continue;
     const nights = s.dates.filter((e) => !range || (e.date >= range[0] && e.date <= range[1]));
-    if (nights.length) list.push({ ...s, nights, r: research.get(s.key) });
+    const r = research.get(s.key);
+    if (sortBy === 'must' && tierOf(r) !== 'must') continue;
+    if (nights.length) list.push({ ...s, nights, r, tier: tierOf(r) });
   }
   const scoreOf = (x) => (x.r ? Number(x.r.Score) || 0 : -1);
-  list.sort((a, b) => (sortBy === 'top' ? scoreOf(b) - scoreOf(a) : 0) ||
+  const rank = { must: 0, rated: 1, rest: 2 };
+  list.sort((a, b) => (sortBy !== 'date' ? rank[a.tier] - rank[b.tier] || scoreOf(b) - scoreOf(a) : 0) ||
     (a.nights[0].date + a.nights[0].time).localeCompare(b.nights[0].date + b.nights[0].time));
 
   const el = document.getElementById('list');
   const nightCount = list.reduce((n, x) => n + x.nights.length, 0);
+  const mustCount = list.filter((x) => x.tier === 'must').length;
   document.getElementById('count').textContent = `${list.length.toLocaleString('en-US')} show${list.length === 1 ? '' : 's'}` +
     (nightCount > list.length ? ` (${nightCount} dates)` : '') +
-    (range ? (range[0] === range[1] ? ' on ' + fmtDate(range[0]) : ' from ' + fmtDate(range[0]) + ' to ' + fmtDate(range[1])) : '');
-  if (!list.length) { el.innerHTML = '<div class="empty">No shows match.</div>'; return; }
+    (range ? (range[0] === range[1] ? ' on ' + fmtDate(range[0]) : ' from ' + fmtDate(range[0]) + ' to ' + fmtDate(range[1])) : '') +
+    (mustCount && sortBy !== 'must' ? ` · ${mustCount} can’t miss` : '');
+  if (!list.length) {
+    el.innerHTML = `<div class="empty">${sortBy === 'must' ? 'Nothing flagged can’t miss for these dates yet.' : 'No shows match.'}</div>`;
+    return;
+  }
 
+  let lastTier = null;
   el.innerHTML = list.map((s) => {
+    // Section headers when sorting by our picks.
+    let head = '';
+    if (sortBy !== 'date' && s.tier !== lastTier) {
+      lastTier = s.tier;
+      head = `<h2 class="section-head ${s.tier}">${TIERS[s.tier][0]}</h2><p class="section-sub">${TIERS[s.tier][1]}</p>`;
+    }
     const next = s.nights[0];
     const rec = showRec(s.nights, today);
     const days = daysBetween(today, next.date);
@@ -280,23 +334,24 @@ function render() {
     const venues = [...new Set(s.nights.map((e) => e.venue))];
     const more = s.nights.length - 1;
     const r = s.r;
-    const score = r ? Number(r.Score) || 0 : null;
-    const scoreBadge = score === null ? '' :
-      `<span class="score${score >= 70 ? ' top' : ''}" title="Reviews ${r.Reviews}/5 · Rarity ${r.Rarity}/5 · Significance ${r.Significance}/5 · Hype ${r.Hype}/5${r.Confidence === 'low' ? ' · thin info' : ''}">${score >= 70 ? 'Top pick · ' : ''}${score}</span>`;
-    const sigs = r ? SIGNALS.filter(([k]) => Number(r[k]) >= 4).map(([, label]) => `<span class="sig">${label}</span>`).join('') : '';
+    const tierBadge = s.tier === 'must' ? '<span class="tier must">Can’t miss</span>' : s.tier === 'rated' ? '<span class="tier rated">Highly reviewed</span>' : '';
+    const scoreTip = r ? `Score ${r.Score} · Reviews ${r.Reviews}/5 · Rarity ${r.Rarity}/5 · Significance ${r.Significance}/5 · Hype ${r.Hype}/5${r.Confidence === 'low' ? ' · thin info' : ''}` : '';
+    const sigs = r && s.tier !== 'rest' ? SIGNALS.filter(([k]) => Number(r[k]) >= 4).map(([, label]) => `<span class="sig">${label}</span>`).join('') : '';
     const link = next.url ? `<a class="ticket" href="${escapeAttr(next.url)}" target="_blank" rel="noopener">Tickets / info →</a>` : '<span class="meta">No link</span>';
     const allDates = more > 0 ? `<details class="dates"><summary>All ${s.nights.length} dates</summary><ul>${s.nights.map((e) => {
       const label = `${fmtDate(e.date)}${e.time ? ' · ' + fmtTime(e.time) : ''}${venues.length > 1 ? ' · ' + escapeHTML(e.venue) : ''}${/sold/i.test(e.status) ? ' · sold out' : ''}`;
       return `<li>${e.url ? `<a href="${escapeAttr(e.url)}" target="_blank" rel="noopener">${label}</a>` : label}</li>`;
     }).join('')}</ul></details>` : '';
-    return `<article class="card">
+    return `${head}<article class="card ${s.tier}"${scoreTip ? ` title="${escapeAttr(scoreTip)}"` : ''}>
       <div>
         <div class="title">${escapeHTML(s.title)}<span class="tag">${escapeHTML(s.genre)}</span></div>
         <div class="meta">${escapeHTML(venues.join(' / '))} · ${more > 0 ? 'Next ' : ''}${fmtDate(next.date)}${next.time ? ' · ' + fmtTime(next.time) : ''} · ${soon}${next.price ? ' · ' + escapeHTML(next.price) : ''}${more > 0 ? ` · +${more} more date${more === 1 ? '' : 's'}` : ''}</div>
       </div>
-      <div class="side">${scoreBadge}${rec ? `<span class="rec ${rec.cls}">${rec.label}</span>` : ''}</div>
-      ${r && r.Description ? `<p class="desc">${escapeHTML(r.Description)}</p>` : ''}
-      ${r && r.Why ? `<p class="why">${escapeHTML(r.Why)}</p>` : ''}
+      <div class="side">${tierBadge}${rec ? `<span class="rec ${rec.cls}">${rec.label}</span>` : ''}</div>
+      ${r && r.Description ? `<p class="desc">${escapeHTML(r.Description)}</p>` : '<p class="pending">Description coming with the next morning’s update.</p>'}
+      ${r && r.Press && s.tier !== 'rest' ? `<p class="press"><b>Press:</b> ${escapeHTML(r.Press)}</p>` : ''}
+      ${r && r.Why && s.tier !== 'rest' ? `<p class="why">${escapeHTML(r.Why)}</p>` : ''}
+      ${r && r.FansOf && s.tier !== 'rest' ? `<p class="fans">For fans of ${escapeHTML(r.FansOf)}</p>` : ''}
       ${sigs ? `<div class="sigs">${sigs}</div>` : ''}
       ${allDates}
       <div class="actions"><span class="meta">${escapeHTML([...new Set(s.nights.map((e) => e.source))].join(', '))}</span>${link}</div>
