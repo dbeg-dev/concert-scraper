@@ -7,8 +7,9 @@
   "scripts": {
     "start": "node index.js",
     "briefing": "node briefing.js",
+    "enrich": "node scripts/enrich.js",
     "scan-venues": "node scripts/scan-venues.js",
-    "check": "node --check index.js && node --check briefing.js",
+    "check": "node --check index.js && node --check briefing.js && node --check lib/enrich.js",
     "test": "node test/parsers.test.js"
   },
   "engines": {

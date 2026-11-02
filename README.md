@@ -46,6 +46,28 @@ The fastest way to widen coverage is the Ticketmaster key. Asking Ohmyrockness f
 6. **Dashboard.** Open `concert-dashboard.html` and set `SHEET_ID` near the top.
    Open the file in a browser. To host it, drop it in a GitHub Pages folder.
 
+## Show research (descriptions and priority)
+
+After each scrape, `lib/enrich.js` collapses the calendar into unique shows (a
+six-night run counts once) and asks Claude, with web search, to research each
+new one. It writes a two-sentence description, a one-line reason to go, and four
+1-5 ratings to the sheet's `Enrich` tab:
+
+| Rating | What it measures |
+| --- | --- |
+| Reviews | Critical reputation of the act or production |
+| Rarity | How seldom it plays NYC (5 = rare visit, 1 = here every week) |
+| Significance | Premiere, debut, farewell, anniversary, new production, one-off |
+| Hype | Current buzz: new album, sellouts, press |
+
+Score = 30% reviews, 20% rarity, 25% significance, 25% hype, scaled to 0-100.
+The dashboard sorts by it ("Top picks first") and flags 70+ as a top pick.
+
+Each show is researched once, then refreshed every 21 days while it stays on
+the calendar. Setup: add an `ANTHROPIC_API_KEY` repo secret. Optional:
+`ENRICH_MODEL` (default `claude-haiku-5-5`) and `ENRICH_MAX` (default 120 per
+run). To backfill without re-scraping: `npm run enrich`.
+
 ## Daily run
 
 `.github/workflows/scrape.yml` runs at 6 AM Eastern. Add these repo secrets:

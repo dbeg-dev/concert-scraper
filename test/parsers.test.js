@@ -126,7 +126,7 @@ test('Clean: drops past events, already-started shows today, and cancelled shows
 });
 
 test('Dashboard: CSV parser handles quoted commas and escaped quotes', () => {
-  const html = fs.readFileSync(path.join(__dirname, '..', 'concert-dashboard.html'), 'utf8');
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
   const src = html.match(/function parseCSV[\s\S]*?\n}\n/)[0];
   const parseCSV = new Function(src + '; return parseCSV;')();
   const rows = parseCSV('Title,Artist,Date\r\n"Tiki Disco, Ruins","Dj ""Q"" Smith",2026-10-18\r\nPlain,Band,2026-10-20\r\n');
@@ -134,6 +134,41 @@ test('Dashboard: CSV parser handles quoted commas and escaped quotes', () => {
   assert.strictEqual(rows[1][0], 'Tiki Disco, Ruins');
   assert.strictEqual(rows[1][1], 'Dj "Q" Smith');
   assert.strictEqual(rows[2][2], '2026-10-20');
+});
+
+const { groupShows, showKey, parseReply, combinedScore } = require('../lib/enrich');
+
+test('Enrich: a multi-night run collapses to one show, across venue spellings', () => {
+  const ev = (title, date, venue) => makeEvent({ title, date, venue });
+  const shows = groupShows([
+    ev('Samson et Dalila', '2026-11-03', 'Metropolitan Opera House'),
+    ev('Samson et Dalila', '2026-11-07', 'Metropolitan Opera House'),
+    ev('Cyrille Aimée', '2026-11-04', 'Birdland'),
+    ev('Cyrille Aimee', '2026-11-05', 'Birdland Jazz Club'),
+    ev('New York Philharmonic:Puccini???s Tosca', '2026-11-13', 'Carnegie'),
+    ev('New York Philharmonic: Puccini’s Tosca', '2026-11-15', 'Carnegie'),
+  ]);
+  assert.strictEqual(shows.length, 3);
+  assert.deepStrictEqual(shows.find((s) => /samson/i.test(s.title)).dates, ['2026-11-03', '2026-11-07']);
+  assert.strictEqual(showKey('Hilary Hahn premieres David Lang???s Concerto'), showKey('Hilary Hahn premieres David Lang’s Concerto'));
+});
+
+test('Enrich: dashboard and scraper build the same show key', () => {
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  const src = html.match(/function fixText[\s\S]*?\n}\n/)[0];
+  const key = new Function(src + '; return showKey;')();
+  for (const t of ['Cyrille Aimée', 'Dudamel conducts Beethoven???s Egmont', 'Tiki Disco: Ruins!']) assert.strictEqual(key(t), showKey(t));
+});
+
+test('Enrich: parses the model reply and clamps ratings', () => {
+  const r = parseReply('Here you go: {"description":"A trio.","why":"Rare.","reviews":5,"rarity":9,"significance":"3","hype":0,"confidence":"high"}');
+  assert.strictEqual(r.rarity, 5);
+  assert.strictEqual(r.hype, 1);
+  assert.strictEqual(r.significance, 3);
+  assert.strictEqual(r.score, combinedScore(r));
+  assert.strictEqual(combinedScore({ reviews: 5, rarity: 5, significance: 5, hype: 5 }), 100);
+  assert.strictEqual(combinedScore({ reviews: 1, rarity: 1, significance: 1, hype: 1 }), 0);
+  assert.throws(() => parseReply('no json here'));
 });
 
 let failed = 0;

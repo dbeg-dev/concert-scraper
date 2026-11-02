@@ -37,6 +37,18 @@
   .tabs a[aria-current="page"] { color:var(--ink); border-bottom-color:var(--ink); }
   select.venue { padding:7px 12px; border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink); font:inherit; font-size:13px; }
   .rec.new { background:#2b5fb3; color:#fff; }
+  .side { display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+  .score { font-size:12px; font-weight:700; padding:3px 9px; border-radius:4px; border:1px solid var(--line); color:var(--ink); white-space:nowrap; }
+  .score.top { background:#6b3fa0; border-color:#6b3fa0; color:#fff; }
+  .desc { grid-column:1 / -1; margin:2px 0 0; font-size:14px; }
+  .why { grid-column:1 / -1; margin:0; font-size:13px; color:var(--muted); font-style:italic; }
+  .sigs { grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:6px; }
+  .sig { font-size:11px; padding:2px 8px; border-radius:999px; background:var(--bg); border:1px solid var(--line); color:var(--muted); }
+  details.dates { grid-column:1 / -1; font-size:13px; }
+  details.dates summary { cursor:pointer; color:var(--muted); }
+  details.dates ul { margin:6px 0 0; padding-left:18px; }
+  details.dates li { margin:2px 0; }
+  details.dates a { color:var(--ink); }
   footer { margin-top: 24px; color: var(--muted); font-size: 12px; text-align:center; }
   @media (max-width:560px) { .card { grid-template-columns: 1fr; } }
 </style>
@@ -72,6 +84,10 @@
     <button class="chip" data-when="month" aria-pressed="false">This month</button>
     <button class="chip" data-when="nextmonth" aria-pressed="false">Next month</button>
     <input type="date" id="day" aria-label="Pick a specific day">
+  </div>
+  <div class="bar" id="sort" role="group" aria-label="Sort">
+    <button class="chip" data-sort="top" aria-pressed="true">Top picks first</button>
+    <button class="chip" data-sort="date" aria-pressed="false">By date</button>
   </div>
   <p class="count" id="count"></p>
 
@@ -193,31 +209,112 @@ function whenRange(today) {
   }
 }
 
+// ---- Shows: one card per show, however many nights it runs ---------------
+// Same key as lib/enrich.js, so the research joins on it.
+function fixText(s) { return String(s || '').replace(/\?{3}/g, '’'); }
+function showKey(title) {
+  return fixText(title).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+let shows = [];
+let research = new Map();
+let sortBy = 'top';
+
+function groupShows(evts) {
+  const map = new Map();
+  for (const e of evts) {
+    const key = showKey(e.title);
+    if (!map.has(key)) map.set(key, { key, title: fixText(e.title), artist: fixText(e.artist), genres: {}, dates: [] });
+    const s = map.get(key);
+    s.genres[e.genre] = (s.genres[e.genre] || 0) + 1;
+    // Same show, same night from two sources (SmallsLIVE mirrors Smalls and
+    // Mezzrow): keep one, preferring the row with a price, link, and time.
+    const twin = s.dates.findIndex((d) => d.date === e.date && (!d.time || !e.time || d.time === e.time));
+    const fill = (x) => (x.price ? 1 : 0) + (x.url ? 1 : 0) + (x.time ? 1 : 0);
+    if (twin < 0) s.dates.push(e);
+    else if (fill(e) > fill(s.dates[twin])) s.dates[twin] = e;
+  }
+  return [...map.values()].map((s) => ({
+    ...s,
+    genre: Object.entries(s.genres).sort((a, b) => b[1] - a[1])[0][0],
+    dates: s.dates.sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time)),
+  }));
+}
+
+// Best badge across the nights shown: last chance beats buy now; sold out only if every night is.
+function showRec(dates, today) {
+  const recs = dates.map((e) => recommendation(e, today));
+  return recs.find((r) => r && r.cls === 'last') || recs.find((r) => r && r.cls === 'buy') ||
+    (recs.every((r) => r && r.cls === 'soldout') ? recs[0] : null);
+}
+
+const SIGNALS = [['Reviews', 'Acclaimed'], ['Rarity', 'Rare in NYC'], ['Significance', 'Special night'], ['Hype', 'Buzzing']];
+
 function render() {
   const q = document.getElementById('q').value.trim().toLowerCase();
   const today = todayNY();
   const range = whenRange(today);
-  const list = events.filter((e) =>
-    (genre === 'All' || e.genre === genre) &&
-    (!range || (e.date >= range[0] && e.date <= range[1])) &&
-    (!q || `${e.title} ${e.artist} ${e.venue}`.toLowerCase().includes(q)));
+  const list = [];
+  for (const s of shows) {
+    if (genre !== 'All' && s.genre !== genre) continue;
+    const hay = `${s.title} ${s.artist} ${s.dates.map((e) => e.venue).join(' ')}`.toLowerCase();
+    if (q && !hay.includes(q)) continue;
+    const nights = s.dates.filter((e) => !range || (e.date >= range[0] && e.date <= range[1]));
+    if (nights.length) list.push({ ...s, nights, r: research.get(s.key) });
+  }
+  const scoreOf = (x) => (x.r ? Number(x.r.Score) || 0 : -1);
+  list.sort((a, b) => (sortBy === 'top' ? scoreOf(b) - scoreOf(a) : 0) ||
+    (a.nights[0].date + a.nights[0].time).localeCompare(b.nights[0].date + b.nights[0].time));
+
   const el = document.getElementById('list');
-  document.getElementById('count').textContent = `${list.length.toLocaleString('en-US')} show${list.length === 1 ? '' : 's'}${range ? (range[0] === range[1] ? ' on ' + fmtDate(range[0]) : ' from ' + fmtDate(range[0]) + ' to ' + fmtDate(range[1])) : ''}`;
+  const nightCount = list.reduce((n, x) => n + x.nights.length, 0);
+  document.getElementById('count').textContent = `${list.length.toLocaleString('en-US')} show${list.length === 1 ? '' : 's'}` +
+    (nightCount > list.length ? ` (${nightCount} dates)` : '') +
+    (range ? (range[0] === range[1] ? ' on ' + fmtDate(range[0]) : ' from ' + fmtDate(range[0]) + ' to ' + fmtDate(range[1])) : '');
   if (!list.length) { el.innerHTML = '<div class="empty">No shows match.</div>'; return; }
-  el.innerHTML = list.map((e) => {
-    const rec = recommendation(e, today);
-    const days = daysBetween(today, e.date);
-    const when = days === 0 ? 'Tonight/today' : days === 1 ? 'Tomorrow' : `${days} days`;
-    const link = e.url ? `<a class="ticket" href="${escapeAttr(e.url)}" target="_blank" rel="noopener">Tickets / info →</a>` : '<span class="meta">No link</span>';
+
+  el.innerHTML = list.map((s) => {
+    const next = s.nights[0];
+    const rec = showRec(s.nights, today);
+    const days = daysBetween(today, next.date);
+    const soon = days === 0 ? 'Tonight/today' : days === 1 ? 'Tomorrow' : `${days} days`;
+    const venues = [...new Set(s.nights.map((e) => e.venue))];
+    const more = s.nights.length - 1;
+    const r = s.r;
+    const score = r ? Number(r.Score) || 0 : null;
+    const scoreBadge = score === null ? '' :
+      `<span class="score${score >= 70 ? ' top' : ''}" title="Reviews ${r.Reviews}/5 · Rarity ${r.Rarity}/5 · Significance ${r.Significance}/5 · Hype ${r.Hype}/5${r.Confidence === 'low' ? ' · thin info' : ''}">${score >= 70 ? 'Top pick · ' : ''}${score}</span>`;
+    const sigs = r ? SIGNALS.filter(([k]) => Number(r[k]) >= 4).map(([, label]) => `<span class="sig">${label}</span>`).join('') : '';
+    const link = next.url ? `<a class="ticket" href="${escapeAttr(next.url)}" target="_blank" rel="noopener">Tickets / info →</a>` : '<span class="meta">No link</span>';
+    const allDates = more > 0 ? `<details class="dates"><summary>All ${s.nights.length} dates</summary><ul>${s.nights.map((e) => {
+      const label = `${fmtDate(e.date)}${e.time ? ' · ' + fmtTime(e.time) : ''}${venues.length > 1 ? ' · ' + escapeHTML(e.venue) : ''}${/sold/i.test(e.status) ? ' · sold out' : ''}`;
+      return `<li>${e.url ? `<a href="${escapeAttr(e.url)}" target="_blank" rel="noopener">${label}</a>` : label}</li>`;
+    }).join('')}</ul></details>` : '';
     return `<article class="card">
       <div>
-        <div class="title">${escapeHTML(e.title)}<span class="tag">${escapeHTML(e.genre)}</span></div>
-        <div class="meta">${escapeHTML(e.venue)} · ${fmtDate(e.date)}${e.time ? ' · ' + fmtTime(e.time) : ''} · ${when}${e.price ? ' · ' + escapeHTML(e.price) : ''}</div>
+        <div class="title">${escapeHTML(s.title)}<span class="tag">${escapeHTML(s.genre)}</span></div>
+        <div class="meta">${escapeHTML(venues.join(' / '))} · ${more > 0 ? 'Next ' : ''}${fmtDate(next.date)}${next.time ? ' · ' + fmtTime(next.time) : ''} · ${soon}${next.price ? ' · ' + escapeHTML(next.price) : ''}${more > 0 ? ` · +${more} more date${more === 1 ? '' : 's'}` : ''}</div>
       </div>
-      ${rec ? `<span class="rec ${rec.cls}">${rec.label}</span>` : ''}
-      <div class="actions"><span class="meta">${escapeHTML(e.source)}</span>${link}</div>
+      <div class="side">${scoreBadge}${rec ? `<span class="rec ${rec.cls}">${rec.label}</span>` : ''}</div>
+      ${r && r.Description ? `<p class="desc">${escapeHTML(r.Description)}</p>` : ''}
+      ${r && r.Why ? `<p class="why">${escapeHTML(r.Why)}</p>` : ''}
+      ${sigs ? `<div class="sigs">${sigs}</div>` : ''}
+      ${allDates}
+      <div class="actions"><span class="meta">${escapeHTML([...new Set(s.nights.map((e) => e.source))].join(', '))}</span>${link}</div>
     </article>`;
   }).join('');
+}
+
+// Research from the Enrich tab. Optional: the calendar works without it.
+async function loadResearch() {
+  try {
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Enrich`;
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) return;
+    const [header, ...rows] = parseCSV(await res.text());
+    if (!header || !header.includes('Key')) return;
+    const idx = Object.fromEntries(header.map((h, i) => [h.trim(), i]));
+    research = new Map(rows.filter((r) => r[idx.Key]).map((r) => [r[idx.Key], Object.fromEntries(Object.entries(idx).map(([h, i]) => [h, r[i] || '']))]));
+  } catch { /* no research yet */ }
 }
 
 function escapeHTML(s) { return String(s).replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
@@ -245,8 +342,10 @@ async function load() {
       }))
       .filter((e) => e.date > today || (e.date === today && (!e.time || e.time >= nowTimeNY())))
       .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+    shows = groupShows(events);
+    await loadResearch();
     const latest = events.map((e) => e.scrapedAt).filter(Boolean).sort().pop();
-    document.getElementById('foot').textContent = latest ? `Data refreshed ${new Date(latest).toLocaleString('en-US')} · ${events.length} upcoming` : '';
+    document.getElementById('foot').textContent = latest ? `Data refreshed ${new Date(latest).toLocaleString('en-US')} · ${shows.length} shows, ${shows.reduce((n, s) => n + s.dates.length, 0)} dates · ${research.size ? research.size + ' researched' : 'research pending'}` : '';
     render();
   } catch (err) {
     el.innerHTML = `<div class="error">Could not load the calendar. ${escapeHTML(err.message)}</div>`;
@@ -254,6 +353,13 @@ async function load() {
 }
 
 document.getElementById('q').addEventListener('input', render);
+document.getElementById('sort').addEventListener('click', (ev) => {
+  const btn = ev.target.closest('button[data-sort]');
+  if (!btn) return;
+  sortBy = btn.dataset.sort;
+  document.querySelectorAll('#sort button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+  render();
+});
 document.getElementById('genres').addEventListener('click', (ev) => {
   const btn = ev.target.closest('button[data-genre]');
   if (!btn) return;

@@ -16,6 +16,7 @@ const { scrapeVillageVanguard } = require('./sources/village-vanguard');
 const { getText, getTextCurl } = require('./lib/http');
 const { cleanExhibits, makeExhibit } = require('./lib/exhibit-dates');
 const { MUSEUMS } = require('./sources/art/museums');
+const { enrichShows } = require('./lib/enrich');
 
 const SOURCES = [
   ['Ohmyrockness', () => scrapeOhmyrockness()],
@@ -140,6 +141,20 @@ async function writeArtSheet(exhibits) {
   console.log(`Sheets: wrote ${rows.length} exhibitions to Art`);
 }
 
+// Research each unique show once (description, reviews, rarity, significance,
+// hype) and cache it in the Enrich tab. Never blocks the rest of the run.
+async function runEnrich(events) {
+  const sheetId = process.env.GOOGLE_SHEET_ID;
+  const credPath = process.env.GOOGLE_CREDENTIALS || './credentials.json';
+  if (!sheetId || !fs.existsSync(credPath)) return console.log('Enrich: no sheet credentials, skipping');
+  try {
+    const auth = new google.auth.GoogleAuth({ keyFile: credPath, scopes: ['https://www.googleapis.com/auth/spreadsheets'] });
+    await enrichShows(events, google.sheets({ version: 'v4', auth }), sheetId);
+  } catch (e) {
+    console.error(`Enrich failed: ${e.message}`);
+  }
+}
+
 async function main() {
   console.log(`NYC concert scrape ${new Date().toISOString()}`);
   const { unique, results } = await runSources();
@@ -147,6 +162,7 @@ async function main() {
   fs.writeFileSync(path.join(__dirname, 'concerts.json'), JSON.stringify({ updatedAt: new Date().toISOString(), sources: results, events: unique }, null, 2));
   console.log('Saved concerts.json');
   await writeSheet(unique);
+  await runEnrich(unique);
 
   const { exhibits: scraped, results: artResults } = await runArt();
   let manual = [];
@@ -174,4 +190,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { main, runSources, runArt };
+module.exports = { main, runSources, runArt, runEnrich };
