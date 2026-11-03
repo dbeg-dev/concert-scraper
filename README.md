@@ -78,6 +78,19 @@ the calendar. Setup: add an `ANTHROPIC_API_KEY` repo secret. Optional:
 `ENRICH_MODEL` (default `claude-haiku-5-5`) and `ENRICH_MAX` (default 300 per
 run). To backfill without re-scraping: `npm run enrich`.
 
+## Not for us (thumbs-down)
+
+Every show and exhibition has a "Not for us" button. It hides the item at once
+(with Undo), and a "Hidden" view brings things back. Multi-night runs hide as
+one, so a long run like Wicked is gone for good with one tap.
+
+To share the hidden list across the family, paste `apps-script/hide.gs` into the
+sheet (Extensions > Apps Script), set its passphrase, deploy it as a web app
+(execute as Me, access Anyone), and put the web app URL in `HIDE_ENDPOINT` in
+`index.html`. Thumbs-downs then land in a `Hidden` tab, each device asks for the
+passphrase once, and the daily research step skips hidden shows. Without the
+endpoint, thumbs-downs still work on each device separately.
+
 ## Daily run
 
 `.github/workflows/scrape.yml` runs at 6 AM Eastern. Add these repo secrets:

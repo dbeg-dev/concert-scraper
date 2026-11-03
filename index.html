@@ -72,6 +72,15 @@
   .press b { color:var(--rated); font-weight:600; }
   .fans { grid-column:1 / -1; margin:0; font-size:12px; color:var(--muted); }
   .pending { grid-column:1 / -1; margin:0; font-size:12px; color:var(--muted); font-style:italic; }
+  .act-right { display:flex; align-items:center; gap:14px; }
+  .nope { background:none; border:1px solid var(--line); border-radius:999px; padding:3px 10px; font:inherit; font-size:12px; color:var(--muted); cursor:pointer; }
+  .nope:hover { border-color:var(--ink); color:var(--ink); }
+  .card.leaving { opacity:0; transform:scale(.98); transition:opacity .2s, transform .2s; }
+  #toast { position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom, 0px)); transform:translateX(-50%); background:var(--ink); color:var(--bg); padding:10px 16px; border-radius:8px; font-size:14px; display:flex; gap:14px; align-items:center; box-shadow:0 4px 16px rgba(0,0,0,.2); z-index:20; max-width:calc(100% - 32px); }
+  #toast[hidden] { display:none; }
+  #toast button { background:none; border:0; color:inherit; font:inherit; font-weight:700; text-decoration:underline; cursor:pointer; padding:0; }
+  .hidden-row { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 14px; border:1px solid var(--line); border-radius:10px; margin-bottom:8px; background:var(--card); }
+  .hidden-row .meta { margin-top:2px; }
   footer { margin-top: 24px; color: var(--muted); font-size: 12px; text-align:center; }
   @media (max-width:560px) { .card { grid-template-columns: 1fr; } }
 </style>
@@ -112,6 +121,7 @@
     <button class="chip" data-sort="top" aria-pressed="true">Our picks first</button>
     <button class="chip" data-sort="must" aria-pressed="false">Can’t miss only</button>
     <button class="chip" data-sort="date" aria-pressed="false">By date</button>
+    <button class="chip" data-sort="hidden" aria-pressed="false" id="hidden-chip">Hidden</button>
   </div>
   <p class="count" id="count"></p>
 
@@ -146,6 +156,94 @@
 // Google Sheet ID (the part between /d/ and /edit in the sheet URL).
 // The sheet must be shared as "Anyone with the link: Viewer".
 const SHEET_ID = '1bYZzF5qJy1t9mPKH0n1wITES7NlyWGMbi5cRE7iToEI';
+// Apps Script web app that records thumbs-downs in the sheet's Hidden tab, so
+// they're shared across the family. See apps-script/hide.gs. Leave empty and
+// thumbs-downs still work, on this device only.
+const HIDE_ENDPOINT = '';
+
+// ---- Not for us -------------------------------------------------------------
+// Shared list from the Hidden tab, plus this device's own recent changes (which
+// win until the sheet catches up, and are all there is without an endpoint).
+let sheetHidden = new Map(); // key -> { title, section }
+let localHide = readStore('tgl-hidden', {}); // key -> { hidden, title, section, at }
+function readStore(k, fallback) { try { return JSON.parse(localStorage.getItem(k)) ?? fallback; } catch { return fallback; } }
+function writeStore(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* private mode */ } }
+function isHidden(key) { return key in localHide ? localHide[key].hidden : sheetHidden.has(key); }
+function hiddenItems() {
+  const all = new Map([...sheetHidden].map(([k, v]) => [k, v]));
+  for (const [k, v] of Object.entries(localHide)) all.set(k, v);
+  return [...all].filter(([k]) => isHidden(k)).map(([key, v]) => ({ key, title: v.title, section: v.section || 'music' }));
+}
+async function loadHidden() {
+  try {
+    const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Hidden`, { cache: 'no-store' });
+    if (!res.ok) return;
+    const [header, ...rows] = parseCSV(await res.text());
+    if (!header || !header.includes('HiddenAt')) return; // tab not created yet
+    const idx = Object.fromEntries(header.map((h, i) => [h.trim(), i]));
+    sheetHidden = new Map(rows.filter((r) => r[idx.Key]).map((r) => [r[idx.Key], { title: r[idx.Title], section: r[idx.Section] }]));
+    // Drop local overrides the sheet now agrees with.
+    if (HIDE_ENDPOINT) for (const [k, v] of Object.entries(localHide)) if (v.hidden === sheetHidden.has(k)) delete localHide[k];
+    writeStore('tgl-hidden', localHide);
+  } catch { /* offline: local list still applies */ }
+}
+
+let toastTimer;
+function toast(msg, undo) {
+  const t = document.getElementById('toast');
+  t.innerHTML = `<span>${escapeHTML(msg)}</span>${undo ? '<button type="button">Undo</button>' : ''}`;
+  if (undo) t.querySelector('button').onclick = () => { t.hidden = true; undo(); };
+  t.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.hidden = true; }, 6000);
+}
+
+function setHidden(key, title, section, hidden, quiet) {
+  localHide[key] = { hidden, title, section, at: Date.now() };
+  writeStore('tgl-hidden', localHide);
+  render();
+  if (typeof renderArt === 'function' && exhibits.length) renderArt();
+  if (!quiet) toast(hidden ? `Hidden: ${title}` : `Back on the list: ${title}`, () => setHidden(key, title, section, !hidden, true));
+  syncHidden(key, title, section, hidden);
+}
+
+async function syncHidden(key, title, section, hidden) {
+  if (!HIDE_ENDPOINT) return;
+  let pass = readStore('tgl-pass', '');
+  if (!pass) {
+    pass = (window.prompt('Family passphrase, so everyone’s thumbs-downs are shared. You’ll only be asked once on this device.') || '').trim();
+    if (!pass) return toast('Hidden on this device only.');
+    writeStore('tgl-pass', pass);
+  }
+  try {
+    const res = await fetch(HIDE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // simple request, no CORS preflight
+      body: JSON.stringify({ passphrase: pass, key, title, section, action: hidden ? 'hide' : 'unhide' }),
+    });
+    const j = await res.json();
+    if (!j.ok && j.error === 'wrong passphrase') {
+      writeStore('tgl-pass', '');
+      toast('Wrong passphrase. Saved on this device only for now.');
+    }
+  } catch { /* stays local on this device */ }
+}
+
+// One click handler for every thumbs-down and bring-back button on the page.
+document.addEventListener('click', (ev) => {
+  const btn = ev.target.closest('[data-hide],[data-unhide]');
+  if (!btn) return;
+  const hide = btn.hasAttribute('data-hide');
+  const key = hide ? btn.dataset.hide : btn.dataset.unhide;
+  const card = btn.closest('.card');
+  if (hide && card) {
+    card.classList.add('leaving');
+    setTimeout(() => setHidden(key, btn.dataset.title, btn.dataset.section, true), 180);
+  } else {
+    setHidden(key, btn.dataset.title, btn.dataset.section, hide);
+  }
+});
+
 const SHEET_TAB = 'Sheet1';
 
 // ---- CSV parsing (handles quoted commas and escaped quotes) ----------------
@@ -288,12 +386,27 @@ const TIERS = {
 
 const SIGNALS = [['Reviews', 'Acclaimed'], ['Rarity', 'Rare in NYC'], ['Significance', 'Special night'], ['Hype', 'Buzzing']];
 
+function renderHidden() {
+  const items = hiddenItems().sort((a, b) => a.title.localeCompare(b.title));
+  document.getElementById('count').textContent = items.length
+    ? `${items.length} hidden. These stay off the list${HIDE_ENDPOINT ? ' for everyone' : ' on this device'} until you bring them back.`
+    : 'Nothing hidden. Tap “Not for us” on any show or exhibition to take it off the list.';
+  document.getElementById('list').innerHTML = items.map((h) => `<div class="hidden-row">
+      <div><div class="title">${escapeHTML(h.title)}</div><div class="meta">${h.section === 'art' ? 'Exhibition' : 'Music'}</div></div>
+      <button class="nope" data-unhide="${escapeAttr(h.key)}" data-title="${escapeAttr(h.title)}" data-section="${escapeAttr(h.section)}">Bring back</button>
+    </div>`).join('');
+}
+
 function render() {
+  const n = hiddenItems().length;
+  document.getElementById('hidden-chip').textContent = n ? `Hidden (${n})` : 'Hidden';
+  if (sortBy === 'hidden') return renderHidden();
   const q = document.getElementById('q').value.trim().toLowerCase();
   const today = todayNY();
   const range = whenRange(today);
   const list = [];
   for (const s of shows) {
+    if (isHidden(s.key)) continue;
     if (genre !== 'All' && s.genre !== genre) continue;
     const hay = `${s.title} ${s.artist} ${s.dates.map((e) => e.venue).join(' ')}`.toLowerCase();
     if (q && !hay.includes(q)) continue;
@@ -354,7 +467,7 @@ function render() {
       ${r && r.FansOf && s.tier !== 'rest' ? `<p class="fans">For fans of ${escapeHTML(r.FansOf)}</p>` : ''}
       ${sigs ? `<div class="sigs">${sigs}</div>` : ''}
       ${allDates}
-      <div class="actions"><span class="meta">${escapeHTML([...new Set(s.nights.map((e) => e.source))].join(', '))}</span>${link}</div>
+      <div class="actions"><span class="meta">${escapeHTML([...new Set(s.nights.map((e) => e.source))].join(', '))}</span><span class="act-right"><button class="nope" data-hide="${escapeAttr(s.key)}" data-title="${escapeAttr(s.title)}" data-section="music" title="Hide this show for good">👎 Not for us</button>${link}</span></div>
     </article>`;
   }).join('');
 }
@@ -398,7 +511,8 @@ async function load() {
       .filter((e) => e.date > today || (e.date === today && (!e.time || e.time >= nowTimeNY())))
       .sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
     shows = groupShows(events);
-    await loadResearch();
+    await Promise.all([loadResearch(), loadHidden()]);
+    if (exhibits.length) renderArt(); // apply the shared hidden list to art too
     const latest = events.map((e) => e.scrapedAt).filter(Boolean).sort().pop();
     document.getElementById('foot').textContent = latest ? `Data refreshed ${new Date(latest).toLocaleString('en-US')} · ${shows.length} shows, ${shows.reduce((n, s) => n + s.dates.length, 0)} dates · ${research.size ? research.size + ' researched' : 'research pending'}` : '';
     render();
@@ -460,13 +574,14 @@ function artBadge(e, today) {
   if (e.start && e.start > today && daysBetween(today, e.start) <= 30) return { cls:'buy', label:'Opening soon' };
   return null;
 }
+function artKey(e) { return 'art:' + showKey(`${e.title} ${e.venue}`); }
 function renderArt() {
   const q = document.getElementById('aq').value.trim().toLowerCase();
   const venue = document.getElementById('avenue').value;
   const today = todayNY();
   const in45 = addDays(today, 45), in60 = addDays(today, 60);
   const onView = (e) => (!e.start || e.start <= today) && (!e.end || e.end >= today);
-  let list = exhibits.filter((e) =>
+  let list = exhibits.filter((e) => !isHidden(artKey(e)) &&
     (aboro === 'All' || e.borough === aboro) &&
     (!venue || e.venue === venue) &&
     (!q || `${e.title} ${e.venue}`.toLowerCase().includes(q)) &&
@@ -488,7 +603,7 @@ function renderArt() {
         <div class="meta">${escapeHTML(e.venue)} · ${escapeHTML(e.borough)} · ${escapeHTML(whenText(e, today))}</div>
       </div>
       ${b ? `<span class="rec ${b.cls}">${b.label}</span>` : ''}
-      <div class="actions"><span class="meta"></span>${link}</div>
+      <div class="actions"><span class="meta"></span><span class="act-right"><button class="nope" data-hide="${escapeAttr(artKey(e))}" data-title="${escapeAttr(e.title)}" data-section="art" title="Hide this exhibition for good">👎 Not for us</button>${link}</span></div>
     </article>`;
   }).join('');
 }
@@ -548,5 +663,6 @@ setInterval(loadArt, 30 * 60 * 1000);
 load();
 setInterval(load, 15 * 60 * 1000);
 </script>
+<div id="toast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>
