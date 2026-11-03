@@ -176,7 +176,7 @@ function hiddenItems() {
 }
 async function loadHidden() {
   try {
-    const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Hidden`, { cache: 'no-store' });
+    const res = await fetch(`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=Hidden`, { cache: 'no-store' });
     if (!res.ok) return;
     const [header, ...rows] = parseCSV(await res.text());
     if (!header || !header.includes('HiddenAt')) return; // tab not created yet
@@ -475,7 +475,7 @@ function render() {
 // Research from the Enrich tab. Optional: the calendar works without it.
 async function loadResearch() {
   try {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Enrich`;
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=Enrich`;
     const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) return;
     const [header, ...rows] = parseCSV(await res.text());
@@ -495,7 +495,7 @@ async function load() {
     return;
   }
   try {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_TAB)}`;
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(SHEET_TAB)}`;
     const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) throw new Error(`Sheet returned ${res.status}. Check that it is shared as "Anyone with the link".`);
     const [header, ...rows] = parseCSV(await res.text());
@@ -610,7 +610,7 @@ function renderArt() {
 async function loadArt() {
   const el = document.getElementById('alist');
   try {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Art`;
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=Art`;
     const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) throw new Error(`Sheet returned ${res.status}.`);
     const [header, ...rows] = parseCSV(await res.text());
