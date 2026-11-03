@@ -8,8 +8,9 @@
     "start": "node index.js",
     "briefing": "node briefing.js",
     "enrich": "node scripts/enrich.js",
+    "alerts": "node scripts/alerts.js",
     "scan-venues": "node scripts/scan-venues.js",
-    "check": "node --check index.js && node --check briefing.js && node --check lib/enrich.js",
+    "check": "node --check index.js && node --check briefing.js && node --check lib/enrich.js && node --check lib/alerts.js",
     "test": "node test/parsers.test.js"
   },
   "engines": {
@@ -19,6 +20,7 @@
   "dependencies": {
     "cheerio": "^1.0.0",
     "dotenv": "^16.4.5",
-    "googleapis": "^144.0.0"
+    "googleapis": "^144.0.0",
+    "nodemailer": "10.1.7"
   }
 }

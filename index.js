@@ -17,6 +17,7 @@ const { getText, getTextCurl } = require('./lib/http');
 const { cleanExhibits, makeExhibit } = require('./lib/exhibit-dates');
 const { MUSEUMS } = require('./sources/art/museums');
 const { enrichShows } = require('./lib/enrich');
+const { runAlerts } = require('./lib/alerts');
 
 const SOURCES = [
   ['Ohmyrockness', () => scrapeOhmyrockness()],
@@ -155,6 +156,19 @@ async function runEnrich(events) {
   }
 }
 
+// Email the weekly digest or a same-morning can't-miss alert. Never blocks the run.
+async function sendAlerts(events, exhibits) {
+  const sheetId = process.env.GOOGLE_SHEET_ID;
+  const credPath = process.env.GOOGLE_CREDENTIALS || './credentials.json';
+  if (!sheetId || !fs.existsSync(credPath)) return console.log('Alerts: no sheet credentials, skipping');
+  try {
+    const auth = new google.auth.GoogleAuth({ keyFile: credPath, scopes: ['https://www.googleapis.com/auth/spreadsheets'] });
+    await runAlerts({ events, exhibits, sheets: google.sheets({ version: 'v4', auth }), sheetId });
+  } catch (e) {
+    console.error(`Alerts failed: ${e.message}`);
+  }
+}
+
 async function main() {
   console.log(`NYC concert scrape ${new Date().toISOString()}`);
   const { unique, results } = await runSources();
@@ -181,6 +195,7 @@ async function main() {
   } catch (e) {
     console.error(`Sheets (Art): ${e.message}`);
   }
+  await sendAlerts(unique, exhibits);
 }
 
 if (require.main === module) {
@@ -190,4 +205,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { main, runSources, runArt, runEnrich };
+module.exports = { main, runSources, runArt, runEnrich, sendAlerts };

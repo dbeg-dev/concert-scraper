@@ -176,6 +176,45 @@ test('Enrich: parses the model reply and clamps ratings', () => {
   assert.strictEqual(thin.cantMiss, false, 'thin research never earns can’t miss');
 });
 
+const { planAlerts, buildShows, tierOf } = require('../lib/alerts');
+const { isMuted } = require('../lib/enrich');
+
+test('Alerts: same tiers as the dashboard', () => {
+  const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  const src = html.match(/function tierOf[\s\S]*?\n}\n/)[0];
+  const pageTier = new Function(src + '; return tierOf;')();
+  for (const r of [null, { Score: '90' }, { Score: '70', CantMiss: 'yes' }, { Score: '50', Reviews: '4' }, { Score: '40', Reviews: '2' }]) {
+    assert.strictEqual(pageTier(r), tierOf(r));
+  }
+});
+
+test('Alerts: first email snapshots, quiet days stay quiet, new can’t-miss alerts the same morning', () => {
+  const research = new Map([
+    ['bigshow', { Score: '90', CantMiss: 'yes', Reviews: '5' }],
+    ['goodtrio', { Score: '65', Reviews: '4' }],
+    ['filler', { Score: '20', Reviews: '2' }],
+  ]);
+  const ev = (title, date) => ({ title, date, venue: 'V', url: 'https://x' });
+  const shows = buildShows([ev('Big Show', '2026-12-01'), ev('Good Trio', '2026-11-06'), ev('Filler', '2026-11-05')], research);
+  const exhibits = [{ title: 'Closing Show', venue: 'MoMA', end: '2026-11-10' }];
+  const first = planAlerts({ shows, exhibits, sent: new Set(), today: '2026-11-03', digest: true, firstRun: true });
+  assert.ok(first.sections.some((s) => s.items.some((i) => i.title === 'Big Show')));
+  assert.ok(!first.sections.some((s) => s.items.some((i) => i.title === 'Filler')), 'unrated shows never email');
+  const sent = new Set(first.marks.map((m) => m[0]));
+  assert.strictEqual(planAlerts({ shows, exhibits, sent, today: '2026-11-04', digest: false, firstRun: false }), null);
+  const more = [...shows, ...buildShows([ev('Rare Visit', '2026-12-10')], new Map([['rarevisit', { Score: '85', CantMiss: 'yes' }]]))];
+  const inst = planAlerts({ shows: more, exhibits, sent, today: '2026-11-04', digest: false, firstRun: false });
+  assert.strictEqual(inst.subject, 'Can’t miss: Rare Visit');
+  // Nothing in one email appears twice.
+  const titles = first.sections.flatMap((s) => s.items.map((i) => i.title));
+  assert.strictEqual(new Set(titles).size, titles.length);
+});
+
+test('Mutes: a typed word or title hides matching shows', () => {
+  assert.ok(isMuted('wickedpartoneinconcert', ['wicked']));
+  assert.ok(!isMuted('yujawang', ['wicked']));
+});
+
 let failed = 0;
 for (const [name, ok, msg] of results) {
   console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${ok ? '' : `\n      ${msg}`}`);

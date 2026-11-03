@@ -91,6 +91,23 @@ sheet (Extensions > Apps Script), set its passphrase, deploy it as a web app
 passphrase once, and the daily research step skips hidden shows. Without the
 endpoint, thumbs-downs still work on each device separately.
 
+## Email alerts
+
+The daily run emails a **weekly digest every Thursday morning**: new can't-miss
+and highly reviewed shows, picks whose last date is within 10 days, and
+exhibitions closing within 14 days. On other days it emails only when a **new
+can't-miss** show appears. The very first email is a snapshot of what's on now.
+Every alert is logged in the sheet's `Alerts` tab, so nothing repeats.
+
+Setup, as repo secrets: `GMAIL_USER` (the Gmail address that sends),
+`GMAIL_APP_PASSWORD` (a Google app password, not your login password), and
+`ALERT_TO` (comma-separated recipients). Optional `ALERT_DIGEST_DAY` changes
+the day. To send a test digest, run the workflow with "Send the weekly digest
+now" ticked.
+
+To keep something out of emails and research, type its title, or just a word
+like `Wicked`, in column A of a sheet tab named `Hidden`.
+
 ## Daily run
 
 `.github/workflows/scrape.yml` runs at 6 AM Eastern. Add these repo secrets:
